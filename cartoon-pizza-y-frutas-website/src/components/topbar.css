@@ -1,0 +1,104 @@
+.topbar-container{
+    background-color: rgb(22,22,22);    
+}
+
+.container{
+    max-width: 1920px;
+}
+
+.logo{
+    height: 80px;
+    cursor: pointer;    
+}
+
+.nav-item{
+    list-style: none;
+    margin: 15px 15px;    
+}
+
+.nav-link{
+    color: white;
+    background: transparent;
+    font-size: 15px;
+    padding: 10px 30px;
+    border: 1px solid white;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.nav-link b{
+    color: white;
+    padding: 10px 5px;
+}
+
+.nav-link.active_op, 
+.nav-link:active,
+.nav-link:hover{
+    background-color: white;
+    color: black;  
+} 
+
+.nav-link b.active_op, 
+.nav-link b:active,
+.nav-link b:hover{    
+    color: black;  
+} 
+
+.nav-link.active_op > #carrito{
+    filter: invert(100%);
+} 
+
+.nav-link:hover > #carrito{
+    filter: invert(100%);
+} 
+
+#cart{
+    border: 1px solid white;
+    padding: 2px 2px;    
+}
+
+#cart img{
+    margin-left: 10px;
+    width: 40px;
+    height: auto;
+}
+
+
+#cart b{
+    font-size: 0;
+}
+
+#cart sub{
+    color: black;
+    background: white;
+    font-size: 10px;       
+    border-radius: 50%;
+    padding: 3px 7px;
+    margin-right: 10px;
+}
+
+.nav-link:hover > #numero{
+    color: white;
+    background: rgb(22, 22, 22);
+} 
+
+.nav-link.active_op > #numero{
+    color: white;
+    background: rgb(22, 22, 22);
+} 
+
+@media (max-width: 1200px) {
+    #cart img{
+        margin-left: 15px;
+    }
+
+    #cart b{
+        font-size: 16px;
+    }
+
+    .nav-link b{
+        color: white;
+        padding-left: 10px;
+    }
+}
