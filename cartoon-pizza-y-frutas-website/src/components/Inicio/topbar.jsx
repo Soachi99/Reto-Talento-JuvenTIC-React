@@ -17,8 +17,8 @@ class topbar extends React.Component {
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="options ms-auto mb-2 mb-xl-0">
-                                <Nav.Item className="nav-item" > <Nav.Link className="nav-link" href=""><b> Inicio </b></Nav.Link> </Nav.Item>
-                                <Nav.Item className="nav-item" > <Nav.Link className="nav-link" href=""><b> Nosotros </b></Nav.Link> </Nav.Item>
+                                <Nav.Item className="nav-item" > <Nav.Link className="nav-link" href="/"><b> Inicio </b></Nav.Link> </Nav.Item>
+                                <Nav.Item className="nav-item" > <Nav.Link className="nav-link" href="/nosotros"><b> Nosotros </b></Nav.Link> </Nav.Item>
                                 <Nav.Item className="nav-item" > <Nav.Link className="nav-link" href=""><b> Menú </b></Nav.Link> </Nav.Item>
                                 <Nav.Item className="nav-item" > <Nav.Link className="nav-link" href=""><b> Servicios </b></Nav.Link> </Nav.Item>
                                 <Nav.Item className="nav-item" > <Nav.Link className="nav-link" href=""><b> Contactanos </b></Nav.Link> </Nav.Item>
