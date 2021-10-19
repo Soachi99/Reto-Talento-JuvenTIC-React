@@ -1,5 +1,5 @@
 import React from "react";
-import "./nuestraPropuesta.css";
+import "./ourPurpose.css";
 
 class nosotros extends React.Component {
     render() {
