@@ -30,7 +30,7 @@ class carousel extends React.Component {
                             alt="Second slide"
                         />
                         <Carousel.Caption className="carousel-caption">
-                            <img src={process.env.PUBLIC_URL + "/images/pizza.png"} class="img-fluid w-25" id="pizza_carousel" alt="Logo Slide Two" />
+                            <img src={process.env.PUBLIC_URL + "/images/pizza.png"} className="img-fluid w-25" id="pizza_carousel" alt="Logo Slide Two" />
                             <h1 id="second_capt"> <b> Las pizzas mas deliciosas de toda la ciudad </b> </h1>
                             <p id="text_second_capt"> Ven a probar de las mas deliciosas pizzas, buen servicio, buena comida y un gran
                                 ambiente</p>
@@ -44,7 +44,7 @@ class carousel extends React.Component {
                             alt="Third slide"
                         />
                         <Carousel.Caption className="carousel-caption">
-                            <img src={process.env.PUBLIC_URL + "/images/pizza_2.png"} class="img-fluid w-25" id="pizza_carousel_two" alt="Logo SLide Three" />
+                            <img src={process.env.PUBLIC_URL + "/images/pizza_2.png"} className="img-fluid w-25" id="pizza_carousel_two" alt="Logo SLide Three" />
                             <h1 id="third_capt"> <b> Reserva con nosotros </b> </h1>
                             <p id="text_third_capt"> No te pierdas de esta gran y deliciosa experiencia junto a tu familia o amigos.Te
                                 esperamos</p>

@@ -5,8 +5,8 @@ class nosotros extends React.Component {
     render() {
         return (
             <div className="nuestra_propuesta">
-                <div class="nosotros">
-                    <img src={process.env.PUBLIC_URL + "/images/banner_nosotros.png"} class="img-fluid w-100" id="nosotros" alt="nosotros"/>
+                <div className="nosotros">
+                    <img src={process.env.PUBLIC_URL + "/images/banner_nosotros.png"} className="img-fluid w-100" id="nosotros" alt="nosotros"/>
 
                     <h1><b>Nuestra propuesta</b></h1>
                     <p>Somos un restaurante innovador, que tiene como misión traer un concepto diferente en sabores y experiencias a

@@ -1,0 +1,10 @@
+.contenedor_recomendaciones{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 1080px) {
+    .contenedor_recomendaciones{
+        grid-template-columns: 1fr;
+    }
+}
