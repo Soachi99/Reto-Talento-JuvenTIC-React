@@ -1,0 +1,30 @@
+/* Sección de nosotros */
+.nuestra_propuesta{
+    position: relative;       
+    width: 100%; 
+    height: auto;
+}
+
+.nosotros{
+    width: 100%; 
+    height: auto;  
+}
+
+.nosotros h1{
+    position: absolute;
+    color: white;
+    top: 12%;
+    left: 27.5%;
+    font-size: 5vw;
+}
+
+.nosotros p{
+    position: absolute;
+    color: white;
+    text-align: center;
+    width: 40%;
+    height: auto;
+    top: 32%;
+    left: 29.5%;
+    font-size: 1.8vw;
+}
