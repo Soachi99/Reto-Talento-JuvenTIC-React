@@ -36,14 +36,16 @@
 
 .nav-link.active_op, 
 .nav-link:active,
-.nav-link:hover{
+.nav-link:hover
+{
     background-color: white;
     color: black;  
 } 
 
 .nav-link b.active_op, 
 .nav-link b:active,
-.nav-link b:hover{    
+.nav-link b:hover
+{    
     color: black;  
 } 
 
