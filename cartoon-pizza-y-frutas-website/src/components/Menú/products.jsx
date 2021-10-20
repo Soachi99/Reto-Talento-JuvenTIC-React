@@ -10,10 +10,10 @@ class Productos extends React.Component {
             <div className ="contenedor_productos mt-5 me-5 ms-5">
                 {Data.map(product => {
                     return (
-                        <Card className="card mt-3" key={product.id}>
+                        <Card className="card-productos mt-3" key={product.id}>
                             <Card.Img
                                 variant="top"
-                                className="imagen img-fluid rounded mx-auto d-block"
+                                className="imagen-productos img-fluid rounded mx-auto d-block"
                                 src={process.env.PUBLIC_URL + product.imagen}
                                 id={"imagen_" + product.id}
                                 key={product.id}

@@ -7,13 +7,13 @@
     height: auto;
 }
 
-.card{
+.card-productos{
     display: grid;
     grid-template-columns: repeat(2, 1fr); 
     grid-template-columns: 520px auto; 
 }
 
-.imagen{
+.imagen-productos{
     max-width: 500px;
 }
 
