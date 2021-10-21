@@ -3,11 +3,16 @@ import Data from "../../js/productos.json";
 import { Card } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import "./products.css";
+import {menosProducto} from "../../js/buttons_menu.js";
+import {masProducto} from "../../js/buttons_menu.js";
+import {addCarrito} from "../../js/buttons_menu.js";
 
 class Productos extends React.Component {
+
     render() {
         return (
             <div className ="contenedor_productos mt-5 me-5 ms-5">
+
                 {Data.map(product => {
                     return (
                         <Card className="card-productos mt-3" key={product.id}>
@@ -39,7 +44,8 @@ class Productos extends React.Component {
                                         variant="dark"
                                         id={"minus_" + product.id}
                                         value={product.id}
-                                        style={{ width: '50px', height: '50px' }}>
+                                        style={{ width: '50px', height: '50px' }}
+                                        onClick = {() => {menosProducto(product.id)}}>
                                         -
                                     </Button>
                                     <p
@@ -52,7 +58,8 @@ class Productos extends React.Component {
                                         variant="dark"
                                         id={"plus_" + product.id}
                                         value={product.id}
-                                        style={{ width: '50px', height: '50px' }}>
+                                        style={{ width: '50px', height: '50px' }}
+                                        onClick = {() => {masProducto(product.id)}}>
                                         +
                                     </Button>
                                 </div>
@@ -61,7 +68,8 @@ class Productos extends React.Component {
                                     <Button
                                         variant="dark"
                                         id={"add_" + product.id}
-                                        value={product.id}>
+                                        value={product.id}
+                                        onClick = {() => {addCarrito(product.id)}}>
                                         Agregar al carrito
                                     </Button>
                                     <Button
