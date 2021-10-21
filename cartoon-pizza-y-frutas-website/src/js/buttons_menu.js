@@ -23,7 +23,7 @@ export function addCarrito(num) {
     let producto = document.getElementById("nombre_" + ID).textContent;
     let descripcion = document.getElementById("des_" + ID).textContent;
     let precio_text = document.getElementById("precio_" + ID).textContent;
-    let precio = parseInt(precio_text.substr(10, 13));
+    let precio = parseInt(precio_text.substr(9, 13));
     let imagen = document.getElementById("imagen_" + ID).getAttribute('src');
 
     if (count <= 0) {

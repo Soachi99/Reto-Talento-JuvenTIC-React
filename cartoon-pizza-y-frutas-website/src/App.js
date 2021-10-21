@@ -12,14 +12,20 @@ import Comentarios from './components/Inicio/commentaries';
 
 import Productos from './components/Menú/productsContainer';
 
+import Carrito from './components/Carrito/cartContainer';
+
 function App() {
   return (
     <div className="App">
       <Topbar />
       <Router>
         <Switch>
+          <Route path="/carrito">
+            <Carrito />
+          </Route>
+
           <Route path="/menu">
-            <Productos/>
+            <Productos />
           </Route>
 
           <Route path="/nosotros">

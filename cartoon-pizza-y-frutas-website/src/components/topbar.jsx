@@ -5,8 +5,15 @@ import { Nav } from "react-bootstrap";
 
 import './topbar.css';
 
+import {cargarNumProducts} from "../js/num_products.js";
+
+
 
 class topbar extends React.Component {
+    componentDidMount() {
+        cargarNumProducts();
+     }
+
     render() {
         return (
             <>
@@ -22,7 +29,7 @@ class topbar extends React.Component {
                                 <Nav.Item className="nav-item" > <Nav.Link className="nav-link" href="/menu"><b> Menú </b></Nav.Link> </Nav.Item>
                                 <Nav.Item className="nav-item" > <Nav.Link className="nav-link" href=""><b> Servicios </b></Nav.Link> </Nav.Item>
                                 <Nav.Item className="nav-item" > <Nav.Link className="nav-link" href=""><b> Contactanos </b></Nav.Link> </Nav.Item>
-                                <Nav.Item className="nav-item" > <Nav.Link className="nav-link" id="cart" href="">
+                                <Nav.Item className="nav-item" > <Nav.Link className="nav-link" id="cart" href="/carrito">
                                     <img src={process.env.PUBLIC_URL + "/images/cart.png"} id="carrito" alt="carrito" />
                                     <b> Carrito de compras </b> <sub id="numero"> 0 </sub>
 
