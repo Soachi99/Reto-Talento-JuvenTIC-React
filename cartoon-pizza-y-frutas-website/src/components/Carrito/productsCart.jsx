@@ -1,18 +1,19 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import { Button } from "react-bootstrap";
+import "./productsCart.css"
 
 class ProductosCarrito extends React.Component {  
     render() {
         let data = JSON.parse(localStorage.getItem('productos'));        
         return (
-            <div>
+            <div className="contenedor_productos_cart mt-4 me-5 ms-5">
                 {data.map(product => {
                     return(
-                        <Card className="card-productos mt-3" key={product.ID}>
+                        <Card className="card-productos_cart mt-3" key={product.ID}>
                             <Card.Img
                                 variant="top"
-                                className="imagen-productos img-fluid rounded mx-auto d-block"
+                                className="imagen-productos_cart img-fluid rounded mx-auto d-block"
                                 src={process.env.PUBLIC_URL + product.imagen}
                                 id={"imagen_" + product.ID}
                                 key={product.ID}
@@ -34,7 +35,7 @@ class ProductosCarrito extends React.Component {
                                     {" Precio Total: $" + product.precio*product.count}
                                 </Card.Text>
 
-                                <div className="botones">
+                                <div className="botones_cart">
                                     <Button
                                         variant="dark"
                                         id={"minus_" + product.ID}
@@ -59,7 +60,7 @@ class ProductosCarrito extends React.Component {
                                     </Button>
                                 </div>
 
-                                <div className="botones_detalles">
+                                <div className="botones_detalles_cart">
                                     <Button
                                         variant="dark"
                                         id={"add_" + product.ID}
