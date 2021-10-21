@@ -1,6 +1,7 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import { Button } from "react-bootstrap";
+import { masProductoCart, menosProductoCart } from "../../js/buttons_cart";
 import "./productsCart.css"
 
 class ProductosCarrito extends React.Component {  
@@ -20,10 +21,10 @@ class ProductosCarrito extends React.Component {
                             />
                             <Card.Body className="ms-4">
                                 <Card.Title
-                                    className="fw-bold"
+                                    className="titulo fw-bold"
                                     id={"nombre_" + product.ID}
                                 >
-                                    {product.nombre} 
+                                    {product.producto} 
                                 </Card.Title>
                                 <Card.Text id={"des_" + product.ID}>
                                     {product.descripcion}
@@ -41,7 +42,7 @@ class ProductosCarrito extends React.Component {
                                         id={"minus_" + product.ID}
                                         value={product.ID}
                                         style={{ width: '50px', height: '50px' }}
-                                        >
+                                        onClick = {() => {menosProductoCart(product.ID)}}>
                                         -
                                     </Button>
                                     <p
@@ -55,7 +56,7 @@ class ProductosCarrito extends React.Component {
                                         id={"plus_" + product.ID}
                                         value={product.ID}
                                         style={{ width: '50px', height: '50px' }}
-                                        >
+                                        onClick = {() => {masProductoCart(product.ID)}}>
                                         +
                                     </Button>
                                 </div>

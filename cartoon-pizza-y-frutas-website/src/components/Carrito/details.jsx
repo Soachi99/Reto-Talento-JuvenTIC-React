@@ -2,8 +2,14 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import "./details.css"
+import { cargarTotales } from "../../js/details_cart";
 
 class Detalles extends React.Component {
+
+    componentDidMount() {
+        cargarTotales();
+    }
+
     render() {
         return (
             <div className="detalles text-white card mt-4 ms-3 me-3" >
