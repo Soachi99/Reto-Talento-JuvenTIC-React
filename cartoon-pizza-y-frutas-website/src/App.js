@@ -14,6 +14,11 @@ import Productos from './components/Menú/productsContainer';
 
 import Carrito from './components/Carrito/cartContainer';
 
+import Contacto from './components/Contacto/Contacto';
+
+import EnviarContacto from './components/Contacto/EnviarContacto'
+
+
 function App() {
   return (
     <div className="App">
@@ -32,6 +37,14 @@ function App() {
             <Comentarios />
           </Route>
 
+          <Route path="/contacto">
+            <Contacto />
+          </Route>
+
+          <Route path="/enviar-contacto">
+            <EnviarContacto />
+          </Route>
+
           <Route path="/">
             <Carousel />
             <Nosotros />
@@ -39,6 +52,8 @@ function App() {
             <Eventos />
             <Comentarios />
           </Route>
+
+
 
 
         </Switch>
