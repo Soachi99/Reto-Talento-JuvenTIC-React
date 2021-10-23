@@ -37,8 +37,8 @@ export default function Contacto() {
   };
 
   return (
-    <div>
-      <div className="contenedor">
+    <div className="contenedor">
+      <div className="contenedor-general-contacto">
         <div className="contenedor-formulario">
           <h1>contáctenos</h1>
           <form
@@ -61,8 +61,8 @@ export default function Contacto() {
               name="nombre"
               placeholder="Nombre Completo *"
               pattern="[a-zA-Z'-'\s]*"
-              minlength="8"
-              maxlength="60"
+              minLength="8"
+              maxLength="60"
               onChange={getNombre}
               required
             />
@@ -74,18 +74,17 @@ export default function Contacto() {
               onChange={getEmail}
               required
             />
-            <textarea
-              name=""
+            <textarea              
               placeholder="Mensaje *(debes escirbir un mensaje de menos de 100 carácteres y mas de 15 carácteres)"
-              minlength="15"
+              minLength="15"
               name="mensaje"
-              maxlength="100"
+              maxLength="100"
               onChange={getMensaje}
               required
             ></textarea>
             <div className="checkbox">
               <input type="checkbox" id="check" required />
-              <label for="check">Acepto Terminos y Condiciones *</label>
+              <label htmlFor="check">Acepto Terminos y Condiciones *</label>
             </div>
             <input type="submit" className="btn-enviar" value="Enviar" />
           </form>

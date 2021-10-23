@@ -14,7 +14,13 @@ class recomendaciones extends React.Component {
                     <Card id="cards" titulo="Pizza Batman" imagen={process.env.PUBLIC_URL + "/images/pizzabatman.jpg"} />
                     <Card id="cards" titulo="Pizza Teen Titans" imagen={process.env.PUBLIC_URL + "/images/pizzateentitans.jpeg"} />
                 </div>                
-                <Button className="d-block mx-auto mt-5 fw-bold fs-5" variant="outline-dark" id="btn_mas"> Más productos</Button>
+                <Button 
+                className="d-block mx-auto mt-5 fw-bold fs-5"  
+                onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href='/menu';
+                    }}
+                variant="outline-dark" id="btn_mas"> Más productos</Button>
             </div>
         );
     }

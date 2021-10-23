@@ -19,7 +19,7 @@ class ProductosCarrito extends React.Component {
                                 id={"imagen_" + product.ID}
                                 key={product.ID}
                             />
-                            <Card.Body className="ms-4">
+                            <Card.Body className="ms-1">
                                 <Card.Title
                                     className="titulo fw-bold"
                                     id={"nombre_" + product.ID}
