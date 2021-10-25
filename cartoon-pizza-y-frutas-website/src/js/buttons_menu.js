@@ -1,4 +1,4 @@
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 
 export function masProducto(num) {
     var valuebtn = document.getElementById("plus_" + num.toString()).value;
@@ -27,7 +27,13 @@ export function addCarrito(num) {
     let imagen = document.getElementById("imagen_" + ID).getAttribute('src');
 
     if (count <= 0) {
-        swal("Error", "No has seleccionado las unidades que deseas del producto que quieres agregar", "error");
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'No has seleccionado las unidades que deseas del producto que quieres agregar',
+            footer: 'Con los botones + y - puedes fijar la cantidad que deseas de cada producto',
+            confirmButtonColor: '#3085d6'
+          });        
     }
     else {
 
@@ -45,15 +51,25 @@ export function addCarrito(num) {
             adddatos.push(productos);
             localStorage.setItem('productos', JSON.stringify(adddatos));
             console.log('producto agregado al carrito');
-            document.getElementById("numero_productos_" + ID).innerHTML = 0;
-            swal("Completado", "El producto seleccionado se ha añadido al carrito de compras", "success");
+            document.getElementById("numero_productos_" + ID).innerHTML = 0;           
+            Swal.fire({                
+                icon: 'success',
+                title: 'Completado',
+                text: 'El producto seleccionado se ha añadido al carrito de compras',
+                confirmButtonColor: '#3085d6'
+            });
         } else {
             let adddatos = JSON.parse(localStorage.getItem('productos'));
             adddatos.push(productos);
             localStorage.setItem('productos', JSON.stringify(adddatos));
             console.log('mas productos')
             document.getElementById("numero_productos_" + ID).innerHTML = 0;
-            swal("Completado", "El producto seleccionado se ha añadido al carrito de compras", "success");
+            Swal.fire({                
+                icon: 'success',
+                title: 'Completado',
+                text: 'El producto seleccionado se ha añadido al carrito de compras',
+                confirmButtonColor: '#3085d6'
+            });
         }
     }
 }

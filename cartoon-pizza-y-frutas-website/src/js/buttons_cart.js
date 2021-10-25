@@ -1,3 +1,7 @@
+import Swal from "sweetalert2";
+import { cargarNumProducts } from "./num_products.js";
+
+
 export function masProductoCart(num) {
     var valuebtn = document.getElementById("plus_" + num.toString()).value;
     var count = parseInt(document.getElementById("numero_productos_" + valuebtn).textContent);
@@ -57,4 +61,42 @@ export function menosProductoCart(num) {
         }
     }
     localStorage.setItem('productos', JSON.stringify(data));
+}
+
+export function deleteCarrito(num) {
+    let datos = JSON.parse(localStorage.getItem('productos'));
+    for (let i = 0; i < datos.length; i++) {
+        if (datos[i].ID === num) {
+            datos.splice(i, 1);
+        }
+    }
+    localStorage.setItem('productos', JSON.stringify(datos));
+    var count_products = localStorage.getItem('num_productos');
+    count_products = count_products - 1;
+    localStorage.setItem('num_productos', count_products);
+    Swal.fire({
+        title: '¿Estas seguro de quitar este producto de tu carrito de compras?',
+        text: "Esta acción no se puede revertir",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, borralo'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                {
+                    icon: 'success',
+                    title: 'Se ha removido de tu lista el producto seleccionado correctamente',
+                    showConfirmButton: false,
+                    timer: 1500
+                }
+            ).then((result) => {
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    cargarNumProducts();
+                    window.location.reload(false);
+                }
+            })
+        }   
+    })
 }

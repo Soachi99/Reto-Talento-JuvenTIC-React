@@ -1,3 +1,8 @@
+.text-container{
+    width: 1300px;
+    height: auto;
+}
+
 .contenedor_productos_cart button{
     background-color: rgb(22, 22, 22);
 }
@@ -39,7 +44,12 @@
     .contenedor_productos_cart{
         width: auto;
         height: auto;
-    }     
+    }    
+    
+    .text-container{
+        width: auto;
+        height: auto;
+    }
 }
 
 @media (max-width: 950px)

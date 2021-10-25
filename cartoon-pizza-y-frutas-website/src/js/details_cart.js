@@ -1,6 +1,7 @@
 export function cargarTotales()
 {
-    if(localStorage.getItem('productos') == null || localStorage.getItem('num_productos') == null) 
+    /* eslint-disable */
+    if(localStorage.getItem('productos') == null || localStorage.getItem('num_productos') == null ||  localStorage.getItem('num_productos') == 0) 
     {
         document.getElementById("total_final").innerHTML = "Total productos:" 
         document.getElementById("servicio").innerHTML = "Servicio:"        

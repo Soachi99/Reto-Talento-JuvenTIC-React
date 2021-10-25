@@ -3,6 +3,8 @@ import { Card } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import "./details.css"
 import { cargarTotales } from "../../js/details_cart";
+import { Validarproductos } from "../../js/confirm_products";
+
 
 class Detalles extends React.Component {
 
@@ -11,6 +13,8 @@ class Detalles extends React.Component {
     }
 
     render() {
+
+
         return (
             <div className="detalles text-white card mt-4 ms-3 me-3" >
                 <Card className="card-detalles">
@@ -21,7 +25,13 @@ class Detalles extends React.Component {
                         <Card.Text className="text-center" id="servicio">Servicio: </Card.Text>
                         <Card.Text className="text-center" id="gran_total">Total: </Card.Text>
 
-                        <Button className="mx-auto d-block" variant="outline-light"> Finalizar pedido</Button>
+                        <Button
+                         className="mx-auto d-block" 
+                         variant="outline-light" 
+                         onClick = {() => Validarproductos()}
+                         > 
+                         Finalizar pedido
+                         </Button>
                     </Card.Body>
                 </Card>
             </div>
