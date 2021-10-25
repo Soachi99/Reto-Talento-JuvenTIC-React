@@ -3,15 +3,28 @@ import Data from "../../js/productos.json";
 import { Card } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import "./products.css";
-import {menosProducto} from "../../js/buttons_menu.js";
-import {masProducto} from "../../js/buttons_menu.js";
-import {addCarrito} from "../../js/buttons_menu.js";
+import { menosProducto } from "../../js/buttons_menu.js";
+import { masProducto } from "../../js/buttons_menu.js";
+import { addCarrito } from "../../js/buttons_menu.js";
+import { useState } from "react";
+import ProductModal from "./productModal";
 
-class Productos extends React.Component {   
 
-    render() {
-        return (
-            <div className ="contenedor_productos mt-5 me-5 ms-5">
+const General = () => {
+
+    const [model, setModel] = useState(false);
+    const [tempdata, setTempdata] = useState([]);
+
+    const getData = (img, title, desc, id) => {
+        let tempData = [img, title, desc, id];
+        console.log(tempData);
+        setTempdata(item => [1, ...tempData]);
+        return setModel(true);
+    }
+
+    return (
+        <>
+            <div className="contenedor_productos mt-5 me-5 ms-5">
 
                 {Data.map(product => {
                     return (
@@ -45,7 +58,7 @@ class Productos extends React.Component {
                                         id={"minus_" + product.id}
                                         value={product.id}
                                         style={{ width: '50px', height: '50px' }}
-                                        onClick = {() => {menosProducto(product.id)}}>
+                                        onClick={() => { menosProducto(product.id) }}>
                                         -
                                     </Button>
                                     <p
@@ -59,7 +72,7 @@ class Productos extends React.Component {
                                         id={"plus_" + product.id}
                                         value={product.id}
                                         style={{ width: '50px', height: '50px' }}
-                                        onClick = {() => {masProducto(product.id)}}>
+                                        onClick={() => { masProducto(product.id) }}>
                                         +
                                     </Button>
                                 </div>
@@ -69,22 +82,42 @@ class Productos extends React.Component {
                                         variant="dark"
                                         id={"add_" + product.id}
                                         value={product.id}
-                                        onClick = {() => {addCarrito(product.id)}}>
+                                        onClick={() => { addCarrito(product.id) }}>
                                         Agregar al carrito
                                     </Button>
                                     <Button
-                                        className = "mt-2"
+                                        className="mt-2"
                                         variant="dark"
-                                        id={"modal_" + product.id}>
+                                        id={"modal_" + product.id}
+                                        onClick={() => getData(product.imagen, product.nombre, product.descripcion, product.id)}
+                                    >
                                         Mas detalles
                                     </Button>
                                 </div>
 
                             </Card.Body>
                         </Card>
+
                     );
                 })}
+
             </div>
+
+            {
+                model === true ? <ProductModal img={tempdata[1]} title={tempdata[2]} desc={tempdata[3]} hide={() => setModel(false)} /> : ''
+            }
+            
+
+        </>
+    );
+}
+
+class Productos extends React.Component {
+    render() {
+        return (
+            <>
+                <General />
+            </>
         );
     }
 }
