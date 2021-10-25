@@ -1,4 +1,5 @@
 import Swal from "sweetalert2";
+import { cargarNumProducts } from "./num_products.js"; 
 
 
 export function Validarproductos() {
@@ -33,7 +34,7 @@ export function Validarproductos() {
                     Swal.showValidationMessage(`Escriba un correo electronico valido`)
                 }
                 else {
-                    emailcliente(nombre,email,comentarios);
+                    emailcliente(nombre, email, comentarios);
                 }
             }
         })
@@ -79,7 +80,7 @@ function emailcliente(nombre, email, comentarios) {
     );
 }
 
-function emailADmin(nombre, email, comentarios){
+function emailADmin(nombre, email, comentarios) {
     let datos = JSON.parse(localStorage.getItem('productos'));
     var total = 0;
     var final_total = 0;
@@ -109,7 +110,7 @@ function emailADmin(nombre, email, comentarios){
         Password: "cartoonpizza",
         From: "cartoonpyf@gmail.com",
         To: "cartooncliente@gmail.com",
-        Subject: "Copia confirmación de los productos reservados",
+        Subject: "Copia confirmación de los productos reservados ",
         Body: contentHtml
     }).then(
         Swal.fire({
@@ -117,6 +118,31 @@ function emailADmin(nombre, email, comentarios){
             title: 'Completado',
             text: 'Sus productos se han reservado correctamente, una copia con el pedido llegara a su correo',
             confirmButtonColor: '#3085d6'
+        }).then((result) => {
+            if (result.isConfirmed) {
+               
+                const datospedido = {
+                    nombre, email, datos, comentarios
+                }  
+                
+                if (localStorage.getItem('pedidos') == null) {
+                    let adddatos = []
+                    adddatos.push(datospedido);
+                    localStorage.setItem('pedidos', JSON.stringify(adddatos));
+                    console.log('nuevo pedido');
+                   
+                } else {
+                    let adddatos = JSON.parse(localStorage.getItem('pedidos'));
+                    adddatos.push(datospedido);
+                    localStorage.setItem('pedidos', JSON.stringify(adddatos));
+                    console.log('mas pedidos')                    
+                }
+
+                localStorage.removeItem('productos');
+                localStorage.setItem('num_productos', 0);
+                cargarNumProducts();
+                window.location.reload(false);
+            }
         })
     );
 }
