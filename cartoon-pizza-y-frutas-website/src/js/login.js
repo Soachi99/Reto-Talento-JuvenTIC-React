@@ -1,17 +1,16 @@
 import Swal from "sweetalert2";
 
 
-export function Logout(){
+export function Logout() {
     Swal.fire({
-        title: '¿Estas seguro de cerrar la sesión?',        
+        title: '¿Estas seguro de cerrar la sesión?',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Si'
     }).then((result) => {
-        if(result.isConfirmed)
-        {
+        if (result.isConfirmed) {
             localStorage.removeItem('admin_view');
             window.location.href = "/"
         }
@@ -36,33 +35,42 @@ export function Login() {
             const password = Swal.getPopup().querySelector('#password').value
 
             let data = JSON.parse(localStorage.getItem('admin'));
+            console.log(data)
+            var band = 0;
 
             if (!login || !password) {
                 Swal.showValidationMessage(`Por favor llene los campos`)
             }
-            else
+
+            for (let i = 0; i < data.length; i++) {
+                
+                if ((data[i].usuario === login) && (data[i].password === password)) {
+                    localStorage.setItem("admin_view", true)
+                    window.location.href = "/admin"
+                    band = 1;
+                    break;
+                }  
+
+            }
+
+            if(band === 0)
             {
-                for (let i = 0; i < data.length; i++) {
-                    if (!(data[i].usuario === login)) {
+                for (let j = 0; j < data.length; j++) {
+                    if (!(data[j].usuario === login)) {
                         Swal.showValidationMessage(`Usuario incorrecto`)
                     }
-                    if (!(data[i].password === password)) {
+                    if (!(data[j].password === password)) {
                         Swal.showValidationMessage(`Contraseña incorrecta`)
                     }
                 }
             }
 
-            
         }
     }).then((result) => {
         if (result.isDenied) {
             Registro();
         }
-        if (result.isConfirmed)
-        {
-            localStorage.setItem("admin_view", true)
-            window.location.href = "/admin"
-        }
+
     })
 }
 
@@ -114,7 +122,7 @@ function RegistroCompletado(usuario, password) {
     } else {
         let adddatos = JSON.parse(localStorage.getItem('admin'));
         adddatos.push(datos);
-        localStorage.setItem('admin', JSON.stringify(adddatos));        
+        localStorage.setItem('admin', JSON.stringify(adddatos));
         Swal.fire({
             icon: 'success',
             title: 'Registro completado',
