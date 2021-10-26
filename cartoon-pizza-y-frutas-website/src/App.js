@@ -20,6 +20,8 @@ import Contacto from './components/Contacto/Contacto';
 import EnviarContacto from './components/Contacto/EnviarContacto';
 
 import LoginButton from './components/Admin/login';
+import Bienvenido from './components/Admin/bienvenido';
+
 function App() {
   return (
     <div className="App">
@@ -47,7 +49,7 @@ function App() {
           </Route>
 
           <Route path="/admin">
-            <Nosotros />
+            <Bienvenido />
           </Route>
 
           <Route path="/">

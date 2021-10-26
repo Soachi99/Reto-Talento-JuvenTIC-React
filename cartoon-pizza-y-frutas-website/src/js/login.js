@@ -34,8 +34,7 @@ export function Login() {
             const login = Swal.getPopup().querySelector('#usuario').value
             const password = Swal.getPopup().querySelector('#password').value
 
-            let data = JSON.parse(localStorage.getItem('admin'));
-            console.log(data)
+            let data = JSON.parse(localStorage.getItem('admin'));            
             var band = 0;
 
             if (!login || !password) {

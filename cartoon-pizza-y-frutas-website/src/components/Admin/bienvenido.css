@@ -1,0 +1,35 @@
+.bienvenido-principal{
+    position: relative;
+    width: 100%;
+    height: 91vh;    
+    background: url("https://i.imgur.com/vh8gAP3.png") no-repeat center center fixed;
+    background-size: cover;
+}
+
+.bienvenido{        
+    background-color: rgba(0, 0, 0, 0.65);
+}
+
+.bienvenido h1{
+    font-size: 4vw;
+    color: white;
+    z-index: 1;
+}
+
+.logo-admin{
+    width: 25vw;
+    height: auto;
+}
+
+@media (max-width: 1200px) {
+    .bienvenido h1{
+        font-size: 6vw;
+        color: white;
+        z-index: 1;
+    }
+    
+    .logo-admin{
+        width: 30vw;
+        height: auto;
+    }
+}
