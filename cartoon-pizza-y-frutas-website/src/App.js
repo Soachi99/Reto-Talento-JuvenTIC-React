@@ -9,6 +9,8 @@ import Recomendaciones from './components/Inicio/bestFood';
 import Eventos from './components/Inicio/events';
 import Comentarios from './components/Inicio/commentaries';
 
+import AboutUs from './components/Nosotros/AboutUs';
+
 import Productos from './components/Menú/productsContainer';
 
 import Carrito from './components/Carrito/cartContainer';
@@ -33,7 +35,7 @@ function App() {
           </Route>
 
           <Route path="/nosotros">
-            <Comentarios />
+            <AboutUs />
           </Route>
 
           <Route path="/contacto">

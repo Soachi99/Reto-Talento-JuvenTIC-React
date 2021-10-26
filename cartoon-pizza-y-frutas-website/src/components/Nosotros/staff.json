@@ -1,0 +1,32 @@
+[
+    {
+      "personal": "Carlos Gonzales",
+      "cargo": "Gerente General",
+      "imagen": "/images/personal1.png"
+    },
+    {
+      "personal": "Andrea Muñoz",
+      "cargo": "Chef",
+      "imagen": "/images/personal2.png"
+    },
+    {
+      "personal": "Monica Perez",
+      "cargo": "Chef",
+      "imagen": "/images/personal3.png"
+    },
+    {
+      "personal": "Juan Martin",
+      "cargo": "Recepcionista",
+      "imagen": "/images/personal4.png"
+    },
+    {
+      "personal": "Rodolfo Ortiz",
+      "cargo": "Mesero",
+      "imagen": "/images/personal5.png"
+    },
+    {
+      "personal": "Laura Rodriguez",
+      "cargo": "Mesera",
+      "imagen": "/images/personal6.png"
+    }
+  ]
