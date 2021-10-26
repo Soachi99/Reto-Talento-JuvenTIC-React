@@ -17,9 +17,9 @@ import Carrito from './components/Carrito/cartContainer';
 
 import Contacto from './components/Contacto/Contacto';
 
-import EnviarContacto from './components/Contacto/EnviarContacto'
+import EnviarContacto from './components/Contacto/EnviarContacto';
 
-
+import LoginButton from './components/Admin/login';
 function App() {
   return (
     <div className="App">
@@ -46,6 +46,10 @@ function App() {
             <EnviarContacto />
           </Route>
 
+          <Route path="/admin">
+            <Nosotros />
+          </Route>
+
           <Route path="/">
             <Carousel />
             <Nosotros />
@@ -55,10 +59,10 @@ function App() {
           </Route>
 
 
-
-
         </Switch>
       </Router>
+
+    <LoginButton />
 
     </div>
   );

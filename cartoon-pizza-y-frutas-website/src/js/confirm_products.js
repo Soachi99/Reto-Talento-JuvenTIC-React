@@ -124,18 +124,16 @@ function emailADmin(nombre, email, comentarios) {
                 const datospedido = {
                     nombre, email, datos, comentarios
                 }  
-                
+
                 if (localStorage.getItem('pedidos') == null) {
                     let adddatos = []
                     adddatos.push(datospedido);
-                    localStorage.setItem('pedidos', JSON.stringify(adddatos));
-                    console.log('nuevo pedido');
+                    localStorage.setItem('pedidos', JSON.stringify(adddatos));                    
                    
                 } else {
                     let adddatos = JSON.parse(localStorage.getItem('pedidos'));
                     adddatos.push(datospedido);
-                    localStorage.setItem('pedidos', JSON.stringify(adddatos));
-                    console.log('mas pedidos')                    
+                    localStorage.setItem('pedidos', JSON.stringify(adddatos));                                       
                 }
 
                 localStorage.removeItem('productos');

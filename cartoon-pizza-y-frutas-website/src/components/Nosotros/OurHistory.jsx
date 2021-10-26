@@ -6,6 +6,7 @@ export default function OurHistory() {
       <img
         className="imagen"
         src={process.env.PUBLIC_URL + "/images/foto_nosotros.png"}
+        alt = "Nosotros"
       />
 
       <div className="informacion">

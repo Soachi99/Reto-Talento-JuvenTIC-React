@@ -49,8 +49,7 @@ export function addCarrito(num) {
         if (localStorage.getItem('productos') == null) {
             let adddatos = []
             adddatos.push(productos);
-            localStorage.setItem('productos', JSON.stringify(adddatos));
-            console.log('producto agregado al carrito');
+            localStorage.setItem('productos', JSON.stringify(adddatos));            
             document.getElementById("numero_productos_" + ID).innerHTML = 0;           
             Swal.fire({                
                 icon: 'success',
@@ -61,8 +60,7 @@ export function addCarrito(num) {
         } else {
             let adddatos = JSON.parse(localStorage.getItem('productos'));
             adddatos.push(productos);
-            localStorage.setItem('productos', JSON.stringify(adddatos));
-            console.log('mas productos')
+            localStorage.setItem('productos', JSON.stringify(adddatos));            
             document.getElementById("numero_productos_" + ID).innerHTML = 0;
             Swal.fire({                
                 icon: 'success',
