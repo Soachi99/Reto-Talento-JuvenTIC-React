@@ -1,0 +1,23 @@
+.historial-container
+{    
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+}
+
+@media (max-width: 1800px) {
+    .historial-container{
+        grid-template-columns: repeat(3, 1fr);
+    }  
+}
+
+@media (max-width: 1300px) {
+    .historial-container{
+        grid-template-columns: repeat(2, 1fr);
+    }  
+}
+
+@media (max-width: 850px) {
+    .historial-container{
+        grid-template-columns: 1fr;
+    }  
+}

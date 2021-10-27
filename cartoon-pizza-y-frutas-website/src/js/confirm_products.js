@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-import { cargarNumProducts } from "./num_products.js"; 
+import { cargarNumProducts } from "./num_products.js";
 
 
 export function Validarproductos() {
@@ -82,6 +82,7 @@ function emailcliente(nombre, email, comentarios) {
 
 function emailADmin(nombre, email, comentarios) {
     let datos = JSON.parse(localStorage.getItem('productos'));
+    var numP = 0;
     var total = 0;
     var final_total = 0;
     var contentHtml = `
@@ -91,6 +92,7 @@ function emailADmin(nombre, email, comentarios) {
         `;
 
     for (let item of datos) {
+        numP += item.count; 
         total = item.count * item.precio;
         final_total += total;
         console.log(item.producto);
@@ -120,20 +122,25 @@ function emailADmin(nombre, email, comentarios) {
             confirmButtonColor: '#3085d6'
         }).then((result) => {
             if (result.isConfirmed) {
-               
+
+                let fecha = new Date();
+                var dia = fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear() + "  " + fecha.getHours() + ":"
+                    + fecha.getMinutes() + ":"
+                    + fecha.getSeconds();
+
                 const datospedido = {
-                    nombre, email, datos, comentarios
-                }  
+                    nombre, email, datos, comentarios, dia, final_total, numP
+                }
 
                 if (localStorage.getItem('pedidos') == null) {
                     let adddatos = []
                     adddatos.push(datospedido);
-                    localStorage.setItem('pedidos', JSON.stringify(adddatos));                    
-                   
+                    localStorage.setItem('pedidos', JSON.stringify(adddatos));
+
                 } else {
                     let adddatos = JSON.parse(localStorage.getItem('pedidos'));
                     adddatos.push(datospedido);
-                    localStorage.setItem('pedidos', JSON.stringify(adddatos));                                       
+                    localStorage.setItem('pedidos', JSON.stringify(adddatos));
                 }
 
                 localStorage.removeItem('productos');

@@ -22,6 +22,8 @@ import EnviarContacto from './components/Contacto/EnviarContacto';
 import LoginButton from './components/Admin/login';
 import Bienvenido from './components/Admin/bienvenido';
 
+import HistorialPedidos from './components/Admin/ordersHistorial';
+
 function App() {
   return (
     <div className="App">
@@ -46,6 +48,10 @@ function App() {
 
           <Route path="/enviar-contacto">
             <EnviarContacto />
+          </Route>
+
+          <Route path="/admin/pedidos">
+            <HistorialPedidos/>
           </Route>
 
           <Route path="/admin">
