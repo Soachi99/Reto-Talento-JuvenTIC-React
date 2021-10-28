@@ -24,6 +24,8 @@ import Bienvenido from './components/Admin/bienvenido';
 
 import HistorialPedidos from './components/Admin/ordersHistorial';
 
+import Reserva from './components/Reserva/Reserva';
+
 function App() {
   return (
     <div className="App">
@@ -44,6 +46,10 @@ function App() {
 
           <Route path="/contacto">
             <Contacto />
+          </Route>
+
+          <Route path="/reserva">
+            <Reserva />
           </Route>
 
           <Route path="/enviar-contacto">
