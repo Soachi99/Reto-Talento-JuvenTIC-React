@@ -40,18 +40,16 @@ const Reserva = () => {
 
   const enviarDatos = async () => {
     // localStorage
-    const guardar = [
-      {
-        name,
-        email,
-        telefono,
-        numPersonas,
-        servicio,
-        fecha,
-        hora,
-        indicacionesEspeciales,
-      },
-    ];
+    const guardar = {
+      name,
+      email,
+      telefono,
+      numPersonas,
+      servicio,
+      fecha,
+      hora,
+      indicacionesEspeciales,
+    };
 
     if (JSON.parse(localStorage.getItem("lista")) === null) {
       let almacenar = [];

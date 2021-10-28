@@ -53,12 +53,13 @@ function App() {
             <Reserva />
           </Route>
 
-          <Route path="/mostrar-reserva">
-            <MostrarReserva />
-          </Route>
 
           <Route path="/enviar-contacto">
             <EnviarContacto />
+          </Route>
+          
+          <Route path="/admin/reservas">
+            <MostrarReserva />
           </Route>
 
           <Route path="/admin/pedidos">

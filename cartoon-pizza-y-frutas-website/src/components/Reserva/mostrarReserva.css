@@ -1,0 +1,39 @@
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 1.25rem;
+}
+
+.contenedor-reserva {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 1140px) {
+  .contenedor-reserva {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 670px) {
+  .contenedor-reserva {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contenedor-reserva .reserva {
+  border-radius: 5px;
+  margin: 1.8rem 0.625rem;
+  padding: 1.25rem;
+  background-color: rgb(22, 22, 22);
+  -webkit-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.75);
+}
+
+.contenedor-reserva .reserva p span {
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+.reserva p {
+  color: #fff;
+}
