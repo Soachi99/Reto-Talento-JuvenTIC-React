@@ -25,6 +25,7 @@ import Bienvenido from './components/Admin/bienvenido';
 import HistorialPedidos from './components/Admin/ordersHistorial';
 
 import Reserva from './components/Reserva/Reserva';
+import MostrarReserva from './components/Reserva/MostrarReserva';
 
 function App() {
   return (
@@ -50,6 +51,10 @@ function App() {
 
           <Route path="/reserva">
             <Reserva />
+          </Route>
+
+          <Route path="/mostrar-reserva">
+            <MostrarReserva />
           </Route>
 
           <Route path="/enviar-contacto">

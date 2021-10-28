@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./reserva.css";
+import axios from "axios";
 import { Limpiar } from "../../js/reserva";
 
 const Reserva = () => {
@@ -37,8 +38,32 @@ const Reserva = () => {
     setindicacionesEspeciales(e.target.value);
   };
 
-  const enviarDatos = (e) => {
-    e.preventDefault();
+  const enviarDatos = async () => {
+    // localStorage
+    const guardar = [
+      {
+        name,
+        email,
+        telefono,
+        numPersonas,
+        servicio,
+        fecha,
+        hora,
+        indicacionesEspeciales,
+      },
+    ];
+
+    if (JSON.parse(localStorage.getItem("lista")) === null) {
+      let almacenar = [];
+      almacenar.push(guardar);
+      localStorage.setItem("lista", JSON.stringify(almacenar));
+    } else {
+      let update = JSON.parse(localStorage.getItem("lista"));
+      update.push(guardar);
+      localStorage.setItem("lista", JSON.stringify(update));
+    }
+
+    // envio del form al correo
     const datos = {
       name,
       email,
@@ -49,7 +74,12 @@ const Reserva = () => {
       hora,
       indicacionesEspeciales,
     };
-    console.log(datos);
+
+    const result = await axios.post("http://localhost:4000/envio-reserva", {
+      datos,
+    });
+    const data = await result.data;
+    return data;
   };
 
   return (
@@ -57,7 +87,7 @@ const Reserva = () => {
       <form
         className="formulario"
         id="form"
-        action="/envio-reserva"
+        action="http://localhost:4000/envio-reserva"
         method="POST"
         onSubmit={enviarDatos}
       >
@@ -70,7 +100,6 @@ const Reserva = () => {
           onChange={getName}
           id="name"
           placeholder="Ingresa tu nombre"
-          required
         />
 
         <p className="emailError"></p>
@@ -80,7 +109,6 @@ const Reserva = () => {
           id="email"
           onChange={getEmail}
           placeholder="Ingresa tu correo electronico"
-          required
         />
 
         <input
@@ -89,7 +117,6 @@ const Reserva = () => {
           id="telefono"
           onChange={getTelefono}
           placeholder="Ingresa tu numero de telefono"
-          required
         />
 
         <label htmlFor="">Numero de personas para la reserva</label>
@@ -101,7 +128,6 @@ const Reserva = () => {
           className="numeroPersonas"
           id="numeroPersonas"
           min="1"
-          required
         />
 
         <select
@@ -110,7 +136,6 @@ const Reserva = () => {
           name="servicio"
           className="servicios"
           id="servicio"
-          required
         >
           <option disabled selected>
             -- Seleccione el servicio --
@@ -144,7 +169,6 @@ const Reserva = () => {
               onChange={getFecha}
               className="fecha"
               id="fecha"
-              required
             />
           </div>
           <div className="hora:">
@@ -155,7 +179,6 @@ const Reserva = () => {
               onChange={getHora}
               className="hora"
               id="hora"
-              required
             />
           </div>
         </div>
@@ -170,9 +193,7 @@ const Reserva = () => {
           placeholder="Si quieres alguna indicacion especial(peticion extra) escibela aquí"
         ></textarea>
 
-        <button type="submit" className="btn-añadir">
-          Enviar reserva
-        </button>
+        <button className="btn-añadir">Enviar reserva</button>
         <button
           type="button"
           id="limpiar"
