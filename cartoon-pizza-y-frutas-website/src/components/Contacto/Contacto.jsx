@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./contacto.css";
+import Swal from "sweetalert2";
 
 export default function Contacto() {
   const [asunto, setasunto] = useState("");
@@ -28,6 +29,14 @@ export default function Contacto() {
       email,
       mensaje,
     };
+
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Se ha enviado correctamente 😀",
+      showConfirmButton: true,
+      timer: false,
+    });
 
     const url = await axios.post("http://localhost:4000/enviar-contacto", {
       datos,
@@ -74,7 +83,7 @@ export default function Contacto() {
               onChange={getEmail}
               required
             />
-            <textarea              
+            <textarea
               placeholder="Mensaje *(debes escirbir un mensaje de menos de 100 carácteres y mas de 15 carácteres)"
               minLength="15"
               name="mensaje"

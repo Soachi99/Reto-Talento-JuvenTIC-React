@@ -5,7 +5,6 @@ const { google } = require('googleapis');
 const { oauth2 } = require('googleapis/build/src/apis/oauth2');
 const { gmail } = require('googleapis/build/src/apis/gmail');
 
-
 router.get('/', (req, res) => {
     res.send('welcome');
 })
@@ -63,7 +62,7 @@ router.post('/enviar-contacto', (req, res) => {
 
     sendMail()
         .then(result => {
-            res.redirect('http://localhost:3000/enviar-contacto')
+            res.redirect('http://localhost:3000/contacto')
             console.log('sent', result)
         })
         .catch(error => console.log(error));
@@ -136,8 +135,8 @@ router.post('/envio-reserva', (req, res) => {
     }
 
     sendMail()
-        .then(result => {
-            res.redirect('http://localhost:3000/admin/reservas')
+        .then(result => {                       
+            res.redirect('http://localhost:3000/admin/reservas')               
             console.log('sent', result)
         })
         .catch(error => console.log(error));

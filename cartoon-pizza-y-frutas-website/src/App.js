@@ -53,7 +53,6 @@ function App() {
             <Reserva />
           </Route>
 
-
           <Route path="/enviar-contacto">
             <EnviarContacto />
           </Route>
