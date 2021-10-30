@@ -25,7 +25,8 @@ body::before {
 .contenedor-form-reserva {
   max-width: 1200px;
   width: 50%;
-  margin: 40px auto;
+  margin: 0 auto;
+  padding: 40px;
   /*background: #fdfdd9;*/
 }
 .contenedor-form-reserva .formulario h2 {

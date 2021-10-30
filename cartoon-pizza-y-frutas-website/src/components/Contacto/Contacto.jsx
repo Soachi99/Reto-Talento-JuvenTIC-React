@@ -30,6 +30,17 @@ export default function Contacto() {
       mensaje,
     };
 
+    // localStorage
+    if (JSON.parse(localStorage.getItem("preguntas")) === null) {
+      let guardarPreguntas = [];
+      guardarPreguntas.push(datos);
+      localStorage.setItem("preguntas", JSON.stringify(guardarPreguntas));
+    } else {
+      let actualizarPreguntas = JSON.parse(localStorage.getItem("preguntas"));
+      actualizarPreguntas.push(datos);
+      localStorage.setItem("preguntas", JSON.stringify(actualizarPreguntas));
+    }
+
     Swal.fire({
       position: "center",
       icon: "success",

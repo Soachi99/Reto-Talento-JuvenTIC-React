@@ -18,6 +18,7 @@ import Carrito from './components/Carrito/cartContainer';
 import Contacto from './components/Contacto/Contacto';
 
 import EnviarContacto from './components/Contacto/EnviarContacto';
+import MostrarContacto from './components/Contacto/MostrarContacto';
 
 import LoginButton from './components/Admin/login';
 import Bienvenido from './components/Admin/bienvenido';
@@ -26,6 +27,7 @@ import HistorialPedidos from './components/Admin/ordersHistorial';
 
 import Reserva from './components/Reserva/Reserva';
 import MostrarReserva from './components/Reserva/MostrarReserva';
+
 
 function App() {
   return (
@@ -55,6 +57,10 @@ function App() {
 
           <Route path="/enviar-contacto">
             <EnviarContacto />
+          </Route>
+
+          <Route path="/admin/preguntas">
+            <MostrarContacto />
           </Route>
           
           <Route path="/admin/reservas">

@@ -1,38 +1,37 @@
-h1 {
+h1.titulo-preguntas {
   text-align: center;
+  font-weight: bold;
   text-transform: uppercase;
   margin-top: 1.25rem;
-  font-weight: bold;
 }
 
-.contenedor-reserva {
+.contenedor-preguntas {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
 @media (max-width: 1140px) {
-  .contenedor-reserva {
+  .contenedor-preguntas {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 @media (max-width: 670px) {
-  .contenedor-reserva {
+  .contenedor-preguntas {
     grid-template-columns: 1fr;
   }
 }
 
-.contenedor-reserva .reserva {
+.contenedor-preguntas .info-pregunta {
   border-radius: 5px;
   border: 1px solid #000;
   margin: 1.8rem 1.25rem;
   padding: 1.25rem;
   background-color: rgb(255, 255, 255);
 }
-
-.contenedor-reserva .reserva p span {
+.contenedor-preguntas .info-pregunta p {
+  color: #000;
+}
+.contenedor-preguntas .info-pregunta p span {
   color: #000;
   font-size: 1.25rem;
   font-weight: bold;
-}
-.reserva p {
-  color: #000;
 }

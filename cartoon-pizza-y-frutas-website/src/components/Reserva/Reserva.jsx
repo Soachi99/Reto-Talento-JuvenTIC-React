@@ -81,126 +81,128 @@ const Reserva = () => {
   };
 
   return (
-    <div className="contenedor-form-reserva">
-      <form
-        className="formulario"
-        id="form"
-        action="http://localhost:4000/envio-reserva"
-        method="POST"
-        onSubmit={enviarDatos}
-      >
-        <h2 className="titulo">Haz tu reserva aquí</h2>
-
-        <p className="nameError"></p>
-        <input
-          type="text"
-          name="nombre"
-          onChange={getName}
-          id="name"
-          placeholder="Ingresa tu nombre"
-        />
-
-        <p className="emailError"></p>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          onChange={getEmail}
-          placeholder="Ingresa tu correo electronico"
-        />
-
-        <input
-          type="tel"
-          name="telefono"
-          id="telefono"
-          onChange={getTelefono}
-          placeholder="Ingresa tu numero de telefono"
-        />
-
-        <label htmlFor="">Numero de personas para la reserva</label>
-        <input
-          type="number"
-          name="numPersonas"
-          placeholder="numero de personas"
-          onChange={getNumPersonas}
-          className="numeroPersonas"
-          id="numeroPersonas"
-          min="1"
-        />
-
-        <select
-          onChange={getServicio}
-          value={servicio}
-          name="servicio"
-          className="servicios"
-          id="servicio"
+    <div className="contenedor">
+      <div className="contenedor-form-reserva">
+        <form
+          className="formulario"
+          id="form"
+          action="http://localhost:4000/envio-reserva"
+          method="POST"
+          onSubmit={enviarDatos}
         >
-          <option disabled selected>
-            -- Seleccione el servicio --
-          </option>
-          <option value="Celebracion de Cumpleaños" name="servicio">
-            Celebracion de Cumpleaños
-          </option>
-          <option value="Aniversarios" name="servicio">
-            Aniversarios
-          </option>
-          <option value="Fiestas Infantiles" name="servicio">
-            Fiestas Infantiles
-          </option>
-          <option value="Declaraciones o Propuestas" name="servicio">
-            Declaraciones o Propuestas
-          </option>
-          <option value="Despedidas" name="servicio">
-            Despedidas
-          </option>
-          <option value="Cena con Amigos" name="servicio">
-            Cena con Amigos
-          </option>
-        </select>
+          <h2 className="titulo">Haz tu reserva aquí</h2>
 
-        <div className="fecha-hora">
-          <div className="fecha:">
-            <label htmlFor="">Fecha</label>
-            <input
-              type="date"
-              name="fecha"
-              onChange={getFecha}
-              className="fecha"
-              id="fecha"
-            />
+          <p className="nameError"></p>
+          <input
+            type="text"
+            name="nombre"
+            onChange={getName}
+            id="name"
+            placeholder="Ingresa tu nombre"
+          />
+
+          <p className="emailError"></p>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            onChange={getEmail}
+            placeholder="Ingresa tu correo electronico"
+          />
+
+          <input
+            type="tel"
+            name="telefono"
+            id="telefono"
+            onChange={getTelefono}
+            placeholder="Ingresa tu numero de telefono"
+          />
+
+          <label htmlFor="">Numero de personas para la reserva</label>
+          <input
+            type="number"
+            name="numPersonas"
+            placeholder="numero de personas"
+            onChange={getNumPersonas}
+            className="numeroPersonas"
+            id="numeroPersonas"
+            min="1"
+          />
+
+          <select
+            onChange={getServicio}
+            value={servicio}
+            name="servicio"
+            className="servicios"
+            id="servicio"
+          >
+            <option disabled selected>
+              -- Seleccione el servicio --
+            </option>
+            <option value="Celebracion de Cumpleaños" name="servicio">
+              Celebracion de Cumpleaños
+            </option>
+            <option value="Aniversarios" name="servicio">
+              Aniversarios
+            </option>
+            <option value="Fiestas Infantiles" name="servicio">
+              Fiestas Infantiles
+            </option>
+            <option value="Declaraciones o Propuestas" name="servicio">
+              Declaraciones o Propuestas
+            </option>
+            <option value="Despedidas" name="servicio">
+              Despedidas
+            </option>
+            <option value="Cena con Amigos" name="servicio">
+              Cena con Amigos
+            </option>
+          </select>
+
+          <div className="fecha-hora">
+            <div className="fecha:">
+              <label htmlFor="">Fecha</label>
+              <input
+                type="date"
+                name="fecha"
+                onChange={getFecha}
+                className="fecha"
+                id="fecha"
+              />
+            </div>
+            <div className="hora:">
+              <label htmlFor="">Hora</label>
+              <input
+                type="time"
+                name="hora"
+                onChange={getHora}
+                className="hora"
+                id="hora"
+              />
+            </div>
           </div>
-          <div className="hora:">
-            <label htmlFor="">Hora</label>
-            <input
-              type="time"
-              name="hora"
-              onChange={getHora}
-              className="hora"
-              id="hora"
-            />
-          </div>
-        </div>
 
-        <textarea
-          id="indicionesEspeciales"
-          name="mensaje"
-          onChange={getIndicacionesEspeciales}
-          className="indicacionesMensaje"
-          cols="30"
-          rows="4"
-          placeholder="Si quieres alguna indicacion especial(peticion extra) escibela aquí"
-        ></textarea>
+          <textarea
+            id="indicionesEspeciales"
+            name="mensaje"
+            onChange={getIndicacionesEspeciales}
+            className="indicacionesMensaje"
+            cols="30"
+            rows="4"
+            placeholder="Si quieres alguna indicacion especial(peticion extra) escibela aquí"
+          ></textarea>
 
-        <button className="btn-añadir">Enviar reserva</button>
-        <button
-          type="button"
-          id="limpiar"
-          className="btn-añadir"
-          onClick={Limpiar}
-        >
-          Limpiar Formulario
-        </button>
-      </form>
+          <button className="btn-añadir">Enviar reserva</button>
+          <button
+            type="button"
+            id="limpiar"
+            className="btn-añadir"
+            onClick={Limpiar}
+          >
+            Limpiar Formulario
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
