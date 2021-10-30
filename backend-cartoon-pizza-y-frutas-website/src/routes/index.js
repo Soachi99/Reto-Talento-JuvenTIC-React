@@ -24,7 +24,7 @@ router.post('/enviar-contacto', (req, res) => {
 
     const clientID = '59869306709-pfdpllnp06q6kbguilck18t2f5dvfde8.apps.googleusercontent.com';
     const clientSecret = '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';
-    const refreshToken = '1//0482Yyo4ZHiQdCgYIARAAGAQSNwF-L9Irx9xFl-3GW4l57qZTvA1r1HDgaEX4pIPNky4XgsYGJrBbvtU1VyOk6mJRkjfqgoeBv8k';
+    const refreshToken = '1//04TKE34uzFJ_xCgYIARAAGAQSNwF-L9IrFGxl5jgNWr4eKc4V6yANYcgqQwclhZXllbOdONs_upzS0NqFMFlGke7oLem7K_ykGXQ';
     const redirectURI = 'https://developers.google.com/oauthplayground';
 
     const oAuth2Client = new google.auth.OAuth2(clientID, clientSecret, redirectURI);
@@ -98,7 +98,7 @@ router.post('/envio-reserva', (req, res) => {
 
     const clientID = '59869306709-pfdpllnp06q6kbguilck18t2f5dvfde8.apps.googleusercontent.com';
     const clientSecret = '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';
-    const refreshToken = '1//0482Yyo4ZHiQdCgYIARAAGAQSNwF-L9Irx9xFl-3GW4l57qZTvA1r1HDgaEX4pIPNky4XgsYGJrBbvtU1VyOk6mJRkjfqgoeBv8k';
+    const refreshToken = '1//04TKE34uzFJ_xCgYIARAAGAQSNwF-L9IrFGxl5jgNWr4eKc4V6yANYcgqQwclhZXllbOdONs_upzS0NqFMFlGke7oLem7K_ykGXQ';
     const redirectURI = 'https://developers.google.com/oauthplayground';
 
     const oAuth2Client = new google.auth.OAuth2(clientID, clientSecret, redirectURI);
@@ -136,7 +136,16 @@ router.post('/envio-reserva', (req, res) => {
 
     sendMail()
         .then(result => {                       
-            res.redirect('http://localhost:3000/admin/reservas')               
+            res.render('mostrar-reserva-cliente.ejs', {
+                nombre,
+                email,
+                telefono,
+                numPersonas,
+                servicio,
+                fecha,
+                hora,
+                mensaje
+            });             
             console.log('sent', result)
         })
         .catch(error => console.log(error));
