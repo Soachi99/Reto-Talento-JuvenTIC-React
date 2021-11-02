@@ -20,8 +20,8 @@ app.use(require('./routes'));
 // static files
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 // server 
 app.listen(port, () => {
     console.log('Servidor ejecuntadonse en puerto', port);
 });
-
