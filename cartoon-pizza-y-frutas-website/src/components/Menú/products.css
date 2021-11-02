@@ -5,6 +5,7 @@
 .contenedor_productos{    
     width: auto;
     height: auto;
+    margin-bottom: 4%; 
 }
 
 .card-productos{

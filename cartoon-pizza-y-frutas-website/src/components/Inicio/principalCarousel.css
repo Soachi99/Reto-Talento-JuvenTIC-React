@@ -36,7 +36,7 @@
 
 .carousel-caption #first_capt{
     position: absolute;    
-    right: 23%;
+    right: 21%;
     top: 22%;
     font-size: 4vw;
 }
@@ -70,7 +70,7 @@
     width: 40%;
     height: auto;   
     left: 16%;
-    top: 20%;
+    top: 17%;
     font-size: 3vw;
 }
 
@@ -80,14 +80,14 @@
     width: 40%;
     height: auto;
     left: 16%;
-    top: 40%;
+    top: 46%;
     font-size: 1.5vw;
 }
 
 .carousel-caption #second_btn{
     position: absolute;
-    top: 58%;
-    left: 48%;
+    top: 60%;
+    left: 47.5%;
 }
 
 /*Tercera imagen carrusel*/
@@ -104,7 +104,7 @@
     width: 40%;
     height: auto;   
     right: 16%;
-    top: 30%;
+    top: 24%;
     font-size: 3vw;
 }
 
@@ -114,12 +114,86 @@
     width: 40%;
     height: auto;
     right: 16%;
-    top: 42%;
+    top: 43%;
     font-size: 1.5vw;
 }
 
 .carousel-caption #third_btn{
     position: absolute;
     top: 58%;
-    right: 49.25%;
+    right: 48.5%;
+}
+
+@media (max-width: 1080px) {
+
+    /*Primera imagen carrusel*/
+
+.carousel-caption #first_capt{
+    position: absolute;    
+    right: 21%;
+    top: 18%;
+    font-size: 4vw;
+}
+
+.carousel-caption #text_first_capt{
+    position: absolute;
+    width: 40%;
+    height: auto;
+    right: 16.5%;
+    top: 47.5%;
+    font-size: 1.5vw;
+}
+
+.carousel-caption #second_capt{
+    position: absolute; 
+    text-align: right;
+    width: 40%;
+    height: auto;   
+    left: 16%;
+    top: 15%;
+    font-size: 3vw;
+}
+
+.carousel-caption #third_capt{
+    position: absolute; 
+    text-align: left;
+    width: 40%;
+    height: auto;   
+    right: 16%;
+    top: 20%;
+    font-size: 3vw;
+}
+
+
+
+    
+    .carousel-caption button{
+        color: white;
+        background: transparent;
+        font-size: 2.5vw;
+        padding: 1vw 1.5vw;
+        border: 1px solid white;
+        cursor: pointer;    
+        border-radius: 5px;
+    }
+
+    .carousel-caption #first_btn{
+        position: absolute;
+        top: 64.5%;
+        right: 28.5%;
+    }
+
+    .carousel-caption #second_btn{
+        position: absolute;
+        top: 62.5%;
+        left: 39%;
+    }
+
+    .carousel-caption #third_btn{
+        position: absolute;
+        top: 56%;
+        right: 42%;
+    }
+    
+    
 }

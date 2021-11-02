@@ -14,7 +14,7 @@ class nosotros extends React.Component {
           />
 
           <h1>
-            <b>Nuestra propuesta</b>
+            <b className="text-center">Nuestra propuesta</b>
           </h1>
           <p>
             Somos un restaurante innovador, que tiene como misión traer un

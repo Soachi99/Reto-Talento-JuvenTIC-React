@@ -1,6 +1,7 @@
 .contenedor-principal{
     display: grid;    
-    grid-template-columns: repeat(2, 1fr);    
+    grid-template-columns: repeat(2, 1fr);   
+    margin-bottom: 7.6%; 
 }
 
 @media (max-width: 1800px) {

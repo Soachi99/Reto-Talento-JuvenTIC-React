@@ -28,6 +28,8 @@ import HistorialPedidos from './components/Admin/ordersHistorial';
 import Reserva from './components/Reserva/Reserva';
 import MostrarReserva from './components/Reserva/MostrarReserva';
 
+import Footer from './components/footer';
+
 
 function App() {
   return (
@@ -88,6 +90,7 @@ function App() {
       </Router>
 
     <LoginButton />
+    <Footer />
 
     </div>
   );
