@@ -7,7 +7,7 @@ class Footer extends React.Component {
             <footer>
                 <div className="contenido-footer">
 
-                    <img src={process.env.PUBLIC_URL + "images/logo_banner.png"} className="logo" alt="Logo footer"/>
+                    <img src={process.env.PUBLIC_URL + "images/logo_banner.png"} className="logo_footer" alt="Logo footer"/>
 
                     <div className ="mapa-sitio">
                     <a className ="titulo-mapa text-decoration-none fw-bold" href="/mapa-del-sitio"> <h2>Mapa del sitio</h2> </a>

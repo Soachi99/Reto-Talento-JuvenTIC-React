@@ -10,10 +10,10 @@ class Ordenes extends React.Component {
             <>
                 {data.map(info => {
                     return (
-                        <Card style={{ width: '22rem'}} className="mt-4 me-5 ms-5 border-dark mb-3 shadow d-block mx-auto" key={info.dia}>
+                        <Card style={{ width: '22rem'}} className="mt-4 me-5 ms-5 border-dark mb-3 shadow d-block mx-auto" key={"pedido"+info.dia}>
                             <Card.Body>
                                 <Card.Title>Pedido {info.dia} </Card.Title>
-                                <Card.Text>
+                                <Card.Text key={"Texto1" + info.dia}>
                                     Nombre cliente: {info.nombre} <br></br>
                                     Correo Electronico: {info.email} <br></br>
                                     Numero de Productos: {info.numP} <br></br>
@@ -21,7 +21,7 @@ class Ordenes extends React.Component {
                                     Productos:
                                     {info.datos.map(prod => {
                                         return (
-                                            <Card.Text>
+                                            <Card.Text key={"Info" + info.dia + prod.producto}>
                                                 {prod.producto} <br></br>
                                                 Cantidad: {prod.count} <br></br>
                                                 Precio Unitario: {prod.precio} <br></br>
