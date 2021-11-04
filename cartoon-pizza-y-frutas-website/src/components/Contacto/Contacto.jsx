@@ -49,9 +49,12 @@ export default function Contacto() {
       timer: false,
     });
 
-    const url = await axios.post("http://localhost:4000/enviar-contacto", {
-      datos,
-    });
+    const url = await axios.post(
+      "https://reto-talento-juventic.herokuapp.com/enviar-contacto",
+      {
+        datos,
+      }
+    );
     const data = await url.data;
     return data;
   };
@@ -62,7 +65,7 @@ export default function Contacto() {
         <div className="contenedor-formulario">
           <h1>contáctenos</h1>
           <form
-            action="http://localhost:4000/enviar-contacto"
+            action="https://reto-talento-juventic.herokuapp.com/enviar-contacto"
             method="POST"
             className="formulario"
             onSubmit={enviar}

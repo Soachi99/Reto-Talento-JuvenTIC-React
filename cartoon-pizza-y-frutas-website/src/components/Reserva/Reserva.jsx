@@ -73,9 +73,12 @@ const Reserva = () => {
       indicacionesEspeciales,
     };
 
-    const result = await axios.post("http://localhost:4000/envio-reserva", {
-      datos,
-    });
+    const result = await axios.post(
+      "https://reto-talento-juventic.herokuapp.com/envio-reserva",
+      {
+        datos,
+      }
+    );
     const data = await result.data;
     return data;
   };
@@ -86,7 +89,7 @@ const Reserva = () => {
         <form
           className="formulario"
           id="form"
-          action="http://localhost:4000/envio-reserva"
+          action="https://reto-talento-juventic.herokuapp.com/envio-reserva"
           method="POST"
           onSubmit={enviarDatos}
         >
