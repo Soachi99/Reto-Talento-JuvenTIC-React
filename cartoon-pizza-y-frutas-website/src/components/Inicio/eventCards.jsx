@@ -13,7 +13,7 @@ class EventCard extends React.Component {
                         <Card.Text className="text-center fs-5 text-white">
                             {this.props.texto}
                         </Card.Text>
-                        <Button className="d-block mx-auto fw-bold" variant="outline-light">Más Información</Button>
+                        <Button className="d-block mx-auto fw-bold" onClick={event =>  window.location.href='/servicios'} variant="outline-light">Más Información</Button>
                     </Card.Body>
                 </Card>
             </div>

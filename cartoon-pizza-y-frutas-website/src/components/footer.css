@@ -1,6 +1,8 @@
 /* FOOTER */
 footer {
     background: rgb(22, 22, 22);
+    box-shadow: 0px 0px 13px 1px rgba(255, 255, 255, 0.65);
+    z-index: 2;
     max-width: 100%;
     height: auto;   
     

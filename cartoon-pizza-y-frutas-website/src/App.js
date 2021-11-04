@@ -29,6 +29,7 @@ import Reserva from './components/Reserva/Reserva';
 import MostrarReserva from './components/Reserva/MostrarReserva';
 
 import Footer from './components/footer';
+import Servicios from './components/Servicios/eventsContainer';
 
 
 function App() {
@@ -42,7 +43,7 @@ function App() {
           </Route>
 
           <Route path="/menu">
-            <Productos />           
+            <Productos />
           </Route>
 
           <Route path="/nosotros">
@@ -51,6 +52,10 @@ function App() {
 
           <Route path="/contacto">
             <Contacto />
+          </Route>
+
+          <Route path="/servicios">
+            <Servicios />
           </Route>
 
           <Route path="/reserva">
@@ -64,13 +69,13 @@ function App() {
           <Route path="/admin/preguntas">
             <MostrarContacto />
           </Route>
-          
+
           <Route path="/admin/reservas">
             <MostrarReserva />
           </Route>
 
           <Route path="/admin/pedidos">
-            <HistorialPedidos/>
+            <HistorialPedidos />
           </Route>
 
           <Route path="/admin">
@@ -89,8 +94,8 @@ function App() {
         </Switch>
       </Router>
 
-    <LoginButton />
-    <Footer />
+      <LoginButton />
+      <Footer />
 
     </div>
   );

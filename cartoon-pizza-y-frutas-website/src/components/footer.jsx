@@ -15,7 +15,7 @@ class Footer extends React.Component {
                     <a href="/">inicio</a>
                     <a href="/nosotros">nosotros</a>
                     <a href="/menu">menú</a>
-                    <a href="/servicio">servicios</a>
+                    <a href="/servicios">servicios</a>
                     <a href="/contacto">contactenos</a>
                     </div>
                     </div>

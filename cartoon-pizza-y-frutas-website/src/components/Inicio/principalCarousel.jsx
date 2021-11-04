@@ -20,7 +20,7 @@ class carousel extends React.Component {
                             <p id="text_first_capt"> El mas rico sabor de pizzas, acompañado de los mejores cartoons. No te pierdas de
                                 esta increible
                                 experiencia</p>
-                            <button type="button" id="first_btn"> <b>Ver menú</b></button>
+                            <button type="button" onClick={event =>  window.location.href='/menu'} id="first_btn"> <b>Ver menú</b></button>
                         </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item interval={500}>
@@ -34,7 +34,7 @@ class carousel extends React.Component {
                             <h1 id="second_capt"> <b> Las pizzas mas deliciosas de toda la ciudad </b> </h1>
                             <p id="text_second_capt"> Ven a probar de las mas deliciosas pizzas, buen servicio, buena comida y un gran
                                 ambiente</p>
-                            <button type="button" id="second_btn"> <b>Ver menú</b></button>
+                            <button type="button" onClick={event =>  window.location.href='/menu'} id="second_btn"> <b>Ver menú</b></button>
                         </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
@@ -48,7 +48,7 @@ class carousel extends React.Component {
                             <h1 id="third_capt"> <b> Reserva con nosotros </b> </h1>
                             <p id="text_third_capt"> No te pierdas de esta gran y deliciosa experiencia junto a tu familia o amigos.Te
                                 esperamos</p>
-                            <button type="button" id="third_btn"> <b>Reserva</b></button>
+                            <button type="button" onClick={event =>  window.location.href='/reserva'} id="third_btn"> <b>Reserva</b></button>
                         </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>
