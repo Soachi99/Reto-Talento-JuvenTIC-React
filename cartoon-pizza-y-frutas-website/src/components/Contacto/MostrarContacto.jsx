@@ -32,7 +32,7 @@ export default function MostrarContacto() {
             <h1 className="titulo-preguntas">
               Peticion o preguntas realizadas
             </h1>
-            <p>No hay informacion por el momento</p>
+            <h2 class="mt-4">No hay informacion por el momento</h2>
           </div>
         </div>
       );

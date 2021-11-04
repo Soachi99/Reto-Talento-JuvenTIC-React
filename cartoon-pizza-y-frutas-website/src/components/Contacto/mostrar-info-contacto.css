@@ -7,8 +7,8 @@ h1.titulo-preguntas {
 .m-bottom {
   margin-bottom: 22.75%;
 }
-.m-bottom p {
-  margin: 0 1.25rem;
+.m-bottom h2 {
+  margin: 0 2rem;
 }
 
 .contenedor-preguntas {

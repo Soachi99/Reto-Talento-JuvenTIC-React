@@ -30,7 +30,7 @@ export default function MostrarReserva() {
         <div>
           <div className="m-bottom">
             <h1>Reservas realizadas</h1>
-            <p>No hay reservas por el momento</p>
+            <h2 class="mt-4">No hay reservas por el momento</h2>
           </div>
         </div>
       );
