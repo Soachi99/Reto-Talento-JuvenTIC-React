@@ -26,7 +26,14 @@ export default function MostrarReserva() {
     );
   } else {
     if (!getDatos) {
-      return <h1>No hay reservas realizadas</h1>;
+      return (
+        <div>
+          <div className="m-bottom">
+            <h1>Reservas realizadas</h1>
+            <p>No hay reservas por el momento</p>
+          </div>
+        </div>
+      );
     } else {
       return (
         <>
