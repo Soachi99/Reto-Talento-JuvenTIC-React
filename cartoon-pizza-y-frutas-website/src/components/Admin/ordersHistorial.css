@@ -4,6 +4,10 @@
     grid-template-columns: repeat(4, 1fr); 
 }
 
+.texto-sin-productos {
+    margin-bottom: 22.75%;
+}
+
 @media (max-width: 1800px) {
     .historial-container{
         grid-template-columns: repeat(3, 1fr);
