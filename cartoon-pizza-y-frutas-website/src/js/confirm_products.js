@@ -136,11 +136,13 @@ function emailADmin(nombre, email, comentarios) {
                     email: email,
                     comentarios: comentarios,
                     total: final_total,
-                    numerop: numP
+                    numerop: numP,
+                    productos: datos
                 }
 
                 datospedido.total = parseInt(datospedido.total);
                 datospedido.numerop = parseInt(datospedido.numerop);
+                datospedido.productos = JSON.stringify(datos);
 
                 axios.post(baseUrl, datospedido);
 

@@ -12,5 +12,6 @@ namespace API_Cartoon_Pizza.Models
         public string comentarios { get; set; }
         public int total { get; set; }
         public int numerop { get; set; }
+        public string productos { get; set; }
     }
 }
