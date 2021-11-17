@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "623c9521-179c-40f9-b8ee-eef30eaa6754": {
+      "ProjectGuid": "623c9521-179c-40f9-b8ee-eef30eaa6754",
+      "DisplayName": "API-Cartoon-Pizza",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Archivos varios",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 1
+}
