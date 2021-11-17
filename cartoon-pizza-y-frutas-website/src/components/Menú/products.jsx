@@ -1,5 +1,4 @@
-import React from "react";
-import Data from "../../js/productos.json";
+import React, { useEffect } from "react";
 import { Card } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import "./products.css";
@@ -8,31 +7,40 @@ import { masProducto } from "../../js/buttons_menu.js";
 import { addCarrito } from "../../js/buttons_menu.js";
 import { useState } from "react";
 import ProductModal from "./productModal";
+import axios from "axios";
 
 
 const General = () => {
+
+    const baseUrl = "http://localhost:9074/api/productos";
+    const [data, setData] = useState([]);
+
+    const peticionGet = async () =>{
+        await axios.get(baseUrl).then(response => setData(response.data)).catch(error => console.error(error));
+    }
 
     const [model, setModel] = useState(false);
     const [tempdata, setTempdata] = useState([]);
 
     const getData = (img, title, desc, id) => {
-        let tempData = [img, title, desc, id];
-        console.log(tempData);
+        let tempData = [img, title, desc, id];        
         setTempdata(item => [1, ...tempData]);
         return setModel(true);
     }
+
+    useEffect(() => {peticionGet();}, [])
 
     return (
         <>
             <div className="contenedor_productos mt-5 me-5 ms-5">
 
-                {Data.map(product => {
+                {data.map(product => {
                     return (
                         <Card className="card-productos mt-3" key={product.id}>
                             <Card.Img
                                 variant="top"
                                 className="imagen-productos img-fluid rounded mx-auto d-block"
-                                src={process.env.PUBLIC_URL + product.imagen}
+                                src={(product.imagen)}
                                 id={"imagen_" + product.id}
                                 key={product.id}
                             />

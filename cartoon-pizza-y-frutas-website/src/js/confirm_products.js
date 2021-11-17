@@ -1,3 +1,4 @@
+import axios from "axios";
 import Swal from "sweetalert2";
 import { cargarNumProducts } from "./num_products.js";
 
@@ -92,7 +93,7 @@ function emailADmin(nombre, email, comentarios) {
         `;
 
     for (let item of datos) {
-        numP += item.count; 
+        numP += item.count;
         total = item.count * item.precio;
         final_total += total;
         console.log(item.producto);
@@ -123,25 +124,36 @@ function emailADmin(nombre, email, comentarios) {
         }).then((result) => {
             if (result.isConfirmed) {
 
+                const baseUrl = "http://localhost:9074/api/pedidos";    
                 let fecha = new Date();
                 var dia = fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear() + "  " + fecha.getHours() + ":"
                     + fecha.getMinutes() + ":"
                     + fecha.getSeconds();
 
                 const datospedido = {
-                    nombre, email, datos, comentarios, dia, final_total, numP
+                    fecha: dia,
+                    nombre: nombre,
+                    email: email,
+                    comentarios: comentarios,
+                    total: final_total,
+                    numerop: numP
                 }
 
-                if (localStorage.getItem('pedidos') == null) {
-                    let adddatos = []
-                    adddatos.push(datospedido);
-                    localStorage.setItem('pedidos', JSON.stringify(adddatos));
+                datospedido.total = parseInt(datospedido.total);
+                datospedido.numerop = parseInt(datospedido.numerop);
 
-                } else {
-                    let adddatos = JSON.parse(localStorage.getItem('pedidos'));
-                    adddatos.push(datospedido);
-                    localStorage.setItem('pedidos', JSON.stringify(adddatos));
-                }
+                axios.post(baseUrl, datospedido);
+
+                // if (localStorage.getItem('pedidos') == null) {
+                //     let adddatos = []
+                //     adddatos.push(datospedido);
+                //     localStorage.setItem('pedidos', JSON.stringify(adddatos));
+
+                // } else {
+                //     let adddatos = JSON.parse(localStorage.getItem('pedidos'));
+                //     adddatos.push(datospedido);
+                //     localStorage.setItem('pedidos', JSON.stringify(adddatos));
+                // }
 
                 localStorage.removeItem('productos');
                 localStorage.setItem('num_productos', 0);

@@ -9,6 +9,7 @@ namespace API_Cartoon_Pizza.Context
         {
 
         }
+        public DbSet<Pedidos> Pedidos { get; set; }
         public DbSet<Productos> Productos { get; set; }
 
     }

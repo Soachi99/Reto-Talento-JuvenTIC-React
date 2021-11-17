@@ -36,9 +36,9 @@ namespace API_Cartoon_Pizza
         {
             app.UseCors(options =>
             {
-                options.WithOrigins("http://localhost:3000");
+                options.AllowAnyOrigin();
                 options.AllowAnyMethod();
-                options.AllowAnyHeader();
+                options.AllowAnyHeader();               
             });
 
             if (env.IsDevelopment())
