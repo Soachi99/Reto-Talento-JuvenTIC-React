@@ -59,6 +59,7 @@ class topbar extends React.Component {
                                 <Nav className="options ms-auto mb-2 mb-xl-0">                                    
                                     <Nav.Item className="nav-item" > <Nav.Link className="nav-link" href="/admin"><b> Inicio </b></Nav.Link> </Nav.Item>
                                     <Nav.Item className="nav-item" > <Nav.Link className="nav-link" href="/admin/reservas"><b> Reservas </b></Nav.Link> </Nav.Item>
+                                    <Nav.Item className="nav-item" > <Nav.Link className="nav-link" href="/admin/platos"><b> Platos </b></Nav.Link> </Nav.Item>
                                     <Nav.Item className="nav-item" > <Nav.Link className="nav-link" href="/admin/pedidos"><b> Pedidos </b></Nav.Link> </Nav.Item>
                                     <Nav.Item className="nav-item" > <Nav.Link className="nav-link" href="/admin/preguntas"><b> Preguntas </b></Nav.Link> </Nav.Item>
                                 </Nav>
