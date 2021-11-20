@@ -1,10 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import "./mostrar-info-contacto.css";
 
-let datosPreguntas = JSON.parse(localStorage.getItem("preguntas"));
 const admin = JSON.parse(localStorage.getItem("admin_view"));
 
 export default function MostrarContacto() {
+
+  const [comentarios, setComentarios] = useState([]);
+  
+  /*useEffect(() => {
+    axios.get("http://localhost:3001/api/comentarios")
+      .then(res => setComentarios(res.data));   
+  }, [comentarios]);      */
+
+ useEffect(() => {
+    fetch("http://localhost:3001/api/comentarios")
+      .then(res => res.json())
+      .then(data => setComentarios(data))
+ }, [])  
+  
+  console.log(comentarios.length)
+
   if (!admin) {
     return (
       <div className="bienvenido-principal">
@@ -25,40 +41,41 @@ export default function MostrarContacto() {
       </div>
     );
   } else {
-    if (!datosPreguntas) {
+    if (comentarios.length === 0) {
       return (
         <div>
           <div className="m-bottom">
             <h1 className="titulo-preguntas">
-              Peticion o preguntas realizadas
+              Comentarios realizados
             </h1>
-            <h2 class="mt-4">No hay informacion por el momento</h2>
+            <h2 className="mt-4">No hay informacion por el momento</h2>
           </div>
         </div>
       );
     } else {
       return (
         <>
-          <h1 className="titulo-preguntas">Peticion o preguntas realizadas</h1>
+          <h1 className="titulo-preguntas">Comentarios realizados</h1>
           <div className="contenedor-preguntas">
-            {datosPreguntas.map((pregunta) => (
-              <div className="info-pregunta">
+            {comentarios.map((comentario) => (
+              <div className="info-pregunta" key={comentario.id}>
                 <p>
                   <span>Asunto: </span>
-                  {pregunta.asunto}
+                  {comentario.asunto}
                 </p>
                 <p>
                   <span>Nombre: </span>
-                  {pregunta.nombre}
+                  {comentario.nombre_completo}
                 </p>
                 <p>
                   <span>Correo: </span>
-                  {pregunta.email}
+                  {comentario.correo}
                 </p>
                 <p>
-                  <span>Mensaje:</span>
-                  {pregunta.mensaje}
+                  <span>Comentario:   </span>
+                  {comentario.mensaje}
                 </p>
+                <a className="mt-2 p-2 btn btn-danger" href={`http://localhost:3001/api/comentarios/${comentario.id}`}>Eliminar</a>
               </div>
             ))}
           </div>

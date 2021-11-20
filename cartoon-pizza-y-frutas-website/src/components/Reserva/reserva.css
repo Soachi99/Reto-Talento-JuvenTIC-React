@@ -243,3 +243,18 @@ textarea {
     flex-direction: column;
   }
 }
+
+@media (max-width: 720px) {
+  .contenedor-form-reserva {
+    width: 90%;
+  }
+}
+@media (max-width: 515px) {
+  .contenedor-form-reserva {
+    padding: 40px 5px;
+    width: 100%;
+  }
+  input::placeholder {
+    font-size: 15px;
+  }
+}

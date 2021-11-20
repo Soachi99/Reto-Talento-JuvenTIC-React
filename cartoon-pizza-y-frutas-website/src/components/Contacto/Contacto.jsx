@@ -29,43 +29,20 @@ export default function Contacto() {
       email,
       mensaje,
     };
-
-    // localStorage
-    if (JSON.parse(localStorage.getItem("preguntas")) === null) {
-      let guardarPreguntas = [];
-      guardarPreguntas.push(datos);
-      localStorage.setItem("preguntas", JSON.stringify(guardarPreguntas));
-    } else {
-      let actualizarPreguntas = JSON.parse(localStorage.getItem("preguntas"));
-      actualizarPreguntas.push(datos);
-      localStorage.setItem("preguntas", JSON.stringify(actualizarPreguntas));
-    }
-
-    Swal.fire({
-      position: "center",
-      icon: "success",
-      title: "Se ha enviado correctamente 😀",
-      showConfirmButton: true,
-      timer: false,
-    });
-
-    const url = await axios.post(
-      "https://reto-talento-juventic.herokuapp.com/enviar-contacto",
-      {
-        datos,
-      }
-    );
-    const data = await url.data;
-    return data;
+  
+    const url = await axios.post("localhost:3001/api/comentarios", {datos});
+    const enviarDatos = await url.data;
+    return enviarDatos;    
   };
 
+    
   return (
     <div className="contenedor">
       <div className="contenedor-general-contacto">
         <div className="contenedor-formulario">
           <h1>contáctenos</h1>
           <form
-            action="https://reto-talento-juventic.herokuapp.com/enviar-contacto"
+            action="http://localhost:3001/api/comentarios"
             method="POST"
             className="formulario"
             onSubmit={enviar}
@@ -81,7 +58,7 @@ export default function Contacto() {
             <input
               type="text"
               className="nombre"
-              name="nombre"
+              name="nombre_completo"
               placeholder="Nombre Completo *"
               pattern="[a-zA-Z'-'\s]*"
               minLength="8"
@@ -92,7 +69,7 @@ export default function Contacto() {
             <input
               type="email"
               className="correo"
-              name="email"
+              name="correo"
               placeholder="Correo Completo *"
               onChange={getEmail}
               required

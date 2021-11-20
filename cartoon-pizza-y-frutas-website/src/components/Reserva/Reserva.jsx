@@ -52,7 +52,7 @@ const Reserva = () => {
     };
 
     const result = await axios.post(
-      "http://localhost:3001/reserva",
+      "http://localhost:3001/api/reserva",
       {
         datos,
       }
@@ -67,7 +67,7 @@ const Reserva = () => {
         <form
           className="formulario"
           id="form"
-          action="http://localhost:3001/reserva"
+          action="http://localhost:3001/api/reserva"
           method="POST"
           onSubmit={enviarDatos}
           required

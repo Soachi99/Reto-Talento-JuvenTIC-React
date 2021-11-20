@@ -12,9 +12,10 @@ export default function MostrarReserva() {
   const [reserva, setReserva] = useState([]);
 
   useEffect(() => {
-      axios.get("http://localhost:3001/reserva")
-       .then(res => setReserva(res.data))       
-  }, []);
+    fetch("http://localhost:3001/api/reserva")
+      .then(res => res.json())
+      .then(data => setReserva(data))
+ }, [])  
 
   console.log(reserva.length)
 
@@ -38,7 +39,7 @@ export default function MostrarReserva() {
       </div>
     );
   } else {
-    if(reserva.length === 0 || reserva.length === 15) {
+    if(reserva.length === 0) {
       return(
         <div>
           <div className="m-bottom">
@@ -62,7 +63,7 @@ export default function MostrarReserva() {
                 <p><span>Fecha: </span>{r.fecha}</p>
                 <p><span>Hora: </span>{r.hora}</p>
                 <p><span>Indicacion especial: </span>{r.indicacion_especial}</p>
-                <a className="mt-2 p-2 btn btn-danger" href={`http://localhost:3001/reserva/${r.id}`}>Eliminar</a>
+                <a className="mt-2 p-2 btn btn-danger" href={`http://localhost:3001/api/reserva/${r.id}`}>Eliminar</a>
               </div>
             ))}
           </div>
