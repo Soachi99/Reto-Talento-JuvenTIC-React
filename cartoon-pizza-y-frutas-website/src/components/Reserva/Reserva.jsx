@@ -4,14 +4,14 @@ import axios from "axios";
 import { Limpiar } from "../../js/reserva";
 
 const Reserva = () => {
-  const [name, setname] = useState("");
-  const [email, setemail] = useState("");
+  const [nombre, setname] = useState("");
+  const [correo, setemail] = useState("");
   const [telefono, settelefono] = useState("");
-  const [numPersonas, setnumPersonas] = useState("");
+  const [numero_personas, setnumPersonas] = useState("");
   const [servicio, setservicio] = useState("");
   const [fecha, setfecha] = useState("");
   const [hora, sethora] = useState("");
-  const [indicacionesEspeciales, setindicacionesEspeciales] = useState("");
+  const [indicacion_especial, setindicacionesEspeciales] = useState("");
 
   const getName = (e) => {
     setname(e.target.value);
@@ -39,42 +39,20 @@ const Reserva = () => {
   };
 
   const enviarDatos = async () => {
-    // localStorage
-    const guardar = {
-      name,
-      email,
-      telefono,
-      numPersonas,
-      servicio,
-      fecha,
-      hora,
-      indicacionesEspeciales,
-    };
-
-    if (JSON.parse(localStorage.getItem("lista")) === null) {
-      let almacenar = [];
-      almacenar.push(guardar);
-      localStorage.setItem("lista", JSON.stringify(almacenar));
-    } else {
-      let update = JSON.parse(localStorage.getItem("lista"));
-      update.push(guardar);
-      localStorage.setItem("lista", JSON.stringify(update));
-    }
-
     // envio del form al correo
     const datos = {
-      name,
-      email,
+      nombre,
+      correo,
       telefono,
-      numPersonas,
+      numero_personas,
       servicio,
       fecha,
       hora,
-      indicacionesEspeciales,
+      indicacion_especial,
     };
 
     const result = await axios.post(
-      "https://reto-talento-juventic.herokuapp.com/envio-reserva",
+      "http://localhost:3001/reserva",
       {
         datos,
       }
@@ -89,9 +67,10 @@ const Reserva = () => {
         <form
           className="formulario"
           id="form"
-          action="https://reto-talento-juventic.herokuapp.com/envio-reserva"
+          action="http://localhost:3001/reserva"
           method="POST"
           onSubmit={enviarDatos}
+          required
         >
           <h2 className="titulo">Haz tu reserva aquí</h2>
 
@@ -102,15 +81,17 @@ const Reserva = () => {
             onChange={getName}
             id="name"
             placeholder="Ingresa tu nombre"
+            required
           />
 
           <p className="emailError"></p>
           <input
             type="email"
-            name="email"
+            name="correo"
             id="email"
             onChange={getEmail}
             placeholder="Ingresa tu correo electronico"
+            required
           />
 
           <input
@@ -119,17 +100,19 @@ const Reserva = () => {
             id="telefono"
             onChange={getTelefono}
             placeholder="Ingresa tu numero de telefono"
+            required
           />
 
           <label htmlFor="">Numero de personas para la reserva</label>
           <input
             type="number"
-            name="numPersonas"
+            name="numero_personas"
             placeholder="numero de personas"
             onChange={getNumPersonas}
             className="numeroPersonas"
             id="numeroPersonas"
             min="1"
+            required
           />
 
           <select
@@ -138,6 +121,7 @@ const Reserva = () => {
             name="servicio"
             className="servicios"
             id="servicio"
+            required
           >
             <option disabled selected>
               -- Seleccione el servicio --
@@ -171,6 +155,7 @@ const Reserva = () => {
                 onChange={getFecha}
                 className="fecha"
                 id="fecha"
+                required
               />
             </div>
             <div className="hora:">
@@ -181,13 +166,14 @@ const Reserva = () => {
                 onChange={getHora}
                 className="hora"
                 id="hora"
+                required
               />
             </div>
           </div>
 
           <textarea
             id="indicionesEspeciales"
-            name="mensaje"
+            name="indicacion_especial"
             onChange={getIndicacionesEspeciales}
             className="indicacionesMensaje"
             cols="30"

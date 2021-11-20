@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./mostrarReserva.css";
+import axios from "axios";
 
-const getDatos = JSON.parse(localStorage.getItem("lista"));
+
+
 const admin = JSON.parse(localStorage.getItem("admin_view"));
 
+
 export default function MostrarReserva() {
+
+  const [reserva, setReserva] = useState([]);
+
+  useEffect(() => {
+      axios.get("http://localhost:3001/reserva")
+       .then(res => setReserva(res.data))       
+  }, []);
+
+  console.log(reserva.length)
+
   if (!admin) {
     return (
       <div className="bienvenido-principal">
@@ -25,52 +38,36 @@ export default function MostrarReserva() {
       </div>
     );
   } else {
-    if (!getDatos) {
-      return (
+    if(reserva.length === 0 || reserva.length === 15) {
+      return(
         <div>
           <div className="m-bottom">
             <h1>Reservas realizadas</h1>
-            <h2 class="mt-4">No hay reservas por el momento</h2>
+            <h2 className="mt-4">No hay reservas por el momento</h2>
           </div>
         </div>
       );
     } else {
-      return (
+      return(
         <>
-          <h1>Reservas realizadas</h1>
+        <h1>Reservas Realizadas</h1>
           <div className="contenedor-reserva">
-            {getDatos.map((dato) => (
-              <div className="reserva">
-                <p>
-                  <span>Nombre:</span> {dato.name}
-                </p>
-                <p>
-                  <span>Correo:</span> {dato.email}
-                </p>
-                <p>
-                  <span>Telefono:</span> {dato.telefono}
-                </p>
-                <p>
-                  <span>Numero de personas:</span> {dato.numPersonas}
-                </p>
-                <p>
-                  <span>Servicio:</span> {dato.servicio}
-                </p>
-                <p>
-                  <span>Fecha:</span> {dato.fecha}
-                </p>
-                <p>
-                  <span>Hora:</span> {dato.hora}
-                </p>
-                <p>
-                  <span>Indicaciones especiales:</span>{" "}
-                  {dato.indicacionesEspeciales}
-                </p>
+            {reserva.map(r => (
+              <div className="reserva" key={r.id}>
+                <p><span>Nombre: </span>{r.nombre}</p>
+                <p><span>Correo: </span>{r.correo}</p>
+                <p><span>Telefono: </span>{r.telefono}</p>
+                <p><span>Numero de personas: </span>{r.numero_personas}</p>
+                <p><span>Servicio: </span>{r.servicio}</p>
+                <p><span>Fecha: </span>{r.fecha}</p>
+                <p><span>Hora: </span>{r.hora}</p>
+                <p><span>Indicacion especial: </span>{r.indicacion_especial}</p>
+                <a className="mt-2 p-2 btn btn-danger" href={`http://localhost:3001/reserva/${r.id}`}>Eliminar</a>
               </div>
             ))}
           </div>
         </>
       );
     }
-  }
+  }  
 }
