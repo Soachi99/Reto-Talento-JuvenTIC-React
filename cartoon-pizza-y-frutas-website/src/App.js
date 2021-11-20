@@ -31,6 +31,7 @@ import MostrarReserva from './components/Reserva/MostrarReserva';
 import Footer from './components/footer';
 import Servicios from './components/Servicios/eventsContainer';
 import GestorPlatos from './components/Admin/gestorPlatos';
+import GestorServicios from './components/Admin/gestorServicios';
 
 
 function App() {
@@ -69,6 +70,10 @@ function App() {
 
           <Route path="/admin/preguntas">
             <MostrarContacto />
+          </Route>
+
+          <Route path="/admin/servicios">
+            <GestorServicios />
           </Route>
 
           <Route path="/admin/platos">

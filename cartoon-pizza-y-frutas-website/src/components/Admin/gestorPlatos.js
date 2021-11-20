@@ -233,7 +233,7 @@ export default function GestorPlatos() {
             <Modal isOpen={ModalEliminar}>
                 <ModalHeader>Eliminar Producto</ModalHeader>
                 <ModalBody>
-                    ¿Está seguro de eliminar el Producto de la base de datos?
+                    ¿Está seguro de eliminar el Producto {NewData.nombre} de la base de datos?
                 </ModalBody>
                 <ModalFooter>
                     <Button type="submit" variant="primary" onClick={() => peticionDelete()} >Confirmar</Button>
