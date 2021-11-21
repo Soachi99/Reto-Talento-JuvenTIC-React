@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Este archivo se usa en el proceso de publicación y empaquetado del proyecto web. Para personalizar el comportamiento de este proceso,
+edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 para obtener más información. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA6KYwM89cx0e2S/xrDEwO7wAAAAACAAAAAAAQZgAAAAEAACAAAAD1MhNlk4KQe53klosaUSCtgE5p9+TNDzs8KKe+p9p5eAAAAAAOgAAAAAIAACAAAAD1yAqW/6G4qUqqisWJqwc2U9pJxT6UHOei78rX0nH10YAAAABD13NWCrTQUlmDAlAdPL52C3kLrhJ23F/MBHd1hUx+pW1Hueg8Px0Lt+MmSMZwE/KR+4YyaWYhjb2MonJ410OzxuGquNoOHTF3HzqzjBXu7WPOVJPFxL+5V4A/AfvPzWGHQFxYe9K6Hnkcy46EKzatHMK1SXgheiqs4NUoV1SMi0AAAADDkUAc1kKbqutXI4F0XxGEKCYQGPGRQZuf6o2sqW7XUe8+mC1iWNzi3pdHfmZErz3M8kUVIJjEx+8Uyz8hOASz</EncryptedPassword>
+    <History>True|2021-11-21T16:57:50.4542948Z;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="Default">
+      <Value>server=bnapc83hifcufy1qcupw-mysql.services.clever-cloud.com%3b port=3306%3b database=bnapc83hifcufy1qcupw%3buser=uxtq5cg9hxworb1z%3bpassword=HphuVZdHsiAf0pWPXg3t</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

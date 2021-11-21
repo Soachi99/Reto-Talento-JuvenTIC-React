@@ -6,7 +6,7 @@ import "./eventsContainer.css"
 
 
 const ServiciosC = () => {
-    const baseUrl = "http://localhost:9074/api/servicios";
+    const baseUrl = "https://api-cartoon-pizza20211121114915.azurewebsites.net/api/servicios";
     const [data, setData] = useState([]);
 
     const peticionGet = async () => {

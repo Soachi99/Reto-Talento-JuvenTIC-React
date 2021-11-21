@@ -124,7 +124,7 @@ function emailADmin(nombre, email, comentarios) {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                const baseUrl = "http://localhost:9074/api/pedidos";    
+                const baseUrl = "https://api-cartoon-pizza20211121114915.azurewebsites.net/api/pedidos";    
                 let fecha = new Date();
                 var dia = fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear() + "  " + fecha.getHours() + ":"
                     + fecha.getMinutes() + ":"

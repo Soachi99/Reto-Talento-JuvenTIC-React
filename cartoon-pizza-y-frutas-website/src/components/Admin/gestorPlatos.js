@@ -6,7 +6,7 @@ import { Form } from "react-bootstrap";
 import Swal from "sweetalert2";
 
 export default function GestorPlatos() {
-    const baseurl = "http://localhost:9074/api/productos"
+    const baseurl = "https://api-cartoon-pizza20211121114915.azurewebsites.net/api/productos"
     const [data, setData] = useState([]);
     const [ModalAgregar, SetModalAgregar] = useState(false);
     const [ModalEditar, SetModalEditar] = useState(false);

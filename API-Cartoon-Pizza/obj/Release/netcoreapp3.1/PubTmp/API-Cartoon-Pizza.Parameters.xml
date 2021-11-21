@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="API-Cartoon-Pizza20211121114915" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^G:\\NUEVO\ ESCRITORIO\ 2021\\Desktop\\RETO\ 3\\Reto-Talento-JuvenTIC-React\\API-Cartoon-Pizza\\obj\\Release\\netcoreapp3\.1\\PubTmp\\Out\\$" />
+  </parameter>
+</parameters>

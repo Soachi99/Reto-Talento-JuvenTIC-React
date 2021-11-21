@@ -4,7 +4,7 @@ import { Card, Button } from "react-bootstrap";
 
 
 const Pedidos = () => {
-    const baseUrl = "http://localhost:9074/api/pedidos";
+    const baseUrl = "https://api-cartoon-pizza20211121114915.azurewebsites.net/api/pedidos";
     const [data, setData] = useState([]);
 
     var detalles = false;
@@ -22,8 +22,7 @@ const Pedidos = () => {
                 localStorage.setItem('iddetalles', id);
                 detalles = true;
             }
-            else{
-                console.log("caso3 papucho")
+            else{                
                 detalles = !detalles;
             }  
         }
