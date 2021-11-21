@@ -40,6 +40,10 @@
 	margin-bottom: 20px;
 }
 
+.card-productos_cart:hover{
+    background-color: rgba(161, 161, 161, 0.1);
+}
+
 @media (max-width: 1800px) {    
     .contenedor_productos_cart{
         width: auto;

@@ -14,6 +14,10 @@
     grid-template-columns: 520px auto; 
 }
 
+.card-productos:hover{
+   background-color: rgba(161, 161, 161, 0.1);
+}
+
 .imagen-productos{
     max-width: 500px;
 }

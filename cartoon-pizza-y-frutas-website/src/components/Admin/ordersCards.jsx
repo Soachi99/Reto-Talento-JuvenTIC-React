@@ -65,7 +65,7 @@ const Pedidos = () => {
             {data.map(info => {
                 //var productos = JSON.parse(info.productos);
                 return (
-                    <Card style={{ width: '22rem' }} className="mt-4 me-5 ms-5 border-dark mb-3 shadow d-block mx-auto" key={"pedido" + info.id}>
+                    <Card style={{ width: '22rem' }} className="card-pedidos mt-4 me-5 ms-5 border-dark mb-3 shadow d-block mx-auto" key={"pedido" + info.id}>
                         <Card.Body>
                             <Card.Title>Pedido {info.fecha} </Card.Title>
                             <Card.Text key={"Texto1" + info.id}>
@@ -77,19 +77,7 @@ const Pedidos = () => {
                                 Comentarios: {info.comentarios} <br></br>
                             </Card.Text>
                             <div id={"Productos" + info.id}>
-                                {/* <Card.Text>
-                                    Productos:
-                                    {productos.map(prod => {
-                                        return (
-                                            <Card.Text key={"Info" + info.id + prod.producto}>
-                                                {prod.producto} <br></br>
-                                                Cantidad: {prod.count} <br></br>
-                                                Precio Unitario: {prod.precio} <br></br>
-                                                Subtotal: {prod.precio * prod.count}
-                                            </Card.Text>
-                                        )
-                                    })}
-                                </Card.Text> */}
+                               
                             </div>
                             <Button className="d-block mx-auto mt-3" variant="outline-dark" key={"Detalles" + info.id} onClick={() => ToggleDetalles(info.id)}>Detalles</Button>
 

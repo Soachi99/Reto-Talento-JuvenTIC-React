@@ -37,12 +37,16 @@
 .back{
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 100%;    
     top: 0;
     right: 0;
     background-color: rgb(22, 22, 22);
     color: white;
     transform: rotateY(180deg);
+}
+
+.titulo-back{
+    margin-top: 40px;
 }
 
 .boton-services{
