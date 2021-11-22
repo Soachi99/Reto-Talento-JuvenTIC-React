@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import OurHistory from "./OurHistory";
 import OurStaff from "./OurStaff";
 import Comentarios from "../Inicio/commentaries";
 import "./nosotros.css";
-import personal from "./staff.json";
+//import personal from "./staff.json";
 
 export default function AboutUs() {
+
+  const [personal, setPersonal] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3001/api/personal")
+      .then(res => res.json())
+      .then(data => setPersonal(data))
+      .catch(error => console.log(error))
+  }, []);
+  
   return (
     <>
       <div className="contenedor-nosotros-main">
@@ -13,13 +23,11 @@ export default function AboutUs() {
         <div className="contenedor-personal" id="personal">
           <h1>nuestro personal</h1>
           <div className="contenedor-personal-grid">
-            {personal.map((persona) => (
-              <OurStaff
-                personal={persona.personal}
-                cargo={persona.cargo}
-                imagen={persona.imagen}
-              />
-            ))}
+            {
+              personal.map(p => (
+                <OurStaff key={p.id} nombre={p.nombre} cargo={p.cargo} imagen={p.imagen_url} />
+              ))
+            }
           </div>
         </div>
       </div>

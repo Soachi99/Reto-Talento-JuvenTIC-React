@@ -82,11 +82,13 @@
   text-shadow: 2px 1px 4px black;
 }
 .contenedor-personal-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin: 0 30px;    
 }
 .personal {
-  margin: 20px auto;
+  margin: 20px 40px;
 }
 .personal img {
   max-width: 200px;
@@ -101,17 +103,6 @@
   line-height: 1.5;
   font-weight: 700;
   color: #50504d;
-}
-
-@media (max-width: 768px) {
-  .contenedor-personal-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 480px) {
-  .contenedor-personal-grid {
-    grid-template-columns: 1fr;
-  }
 }
 /* FIN PERSONAL */
 

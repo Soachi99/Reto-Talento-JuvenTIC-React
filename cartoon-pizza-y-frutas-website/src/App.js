@@ -32,6 +32,7 @@ import Footer from './components/footer';
 import Servicios from './components/Servicios/eventsContainer';
 import GestorPlatos from './components/Admin/gestorPlatos';
 import GestorServicios from './components/Admin/gestorServicios';
+import Personal from './components/Admin/Personal';
 
 
 function App() {
@@ -82,6 +83,10 @@ function App() {
 
           <Route path="/admin/reservas">
             <MostrarReserva />
+          </Route>
+
+          <Route path="/admin/personal">
+            <Personal />
           </Route>
 
           <Route path="/admin/pedidos">

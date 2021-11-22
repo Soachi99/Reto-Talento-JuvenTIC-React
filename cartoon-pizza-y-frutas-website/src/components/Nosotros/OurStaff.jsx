@@ -1,13 +1,13 @@
 import React from "react";
 
 export default function OurStaff(props) {
-  const { personal, cargo, imagen } = props;
+  const { nombre, cargo, imagen } = props;
 
   return (
     <div className="personal">
       <img src={imagen} alt="" />
-      <p className="nombre">{personal}</p>
+      <p className="nombre">{nombre}</p>
       <p className="cargo">{cargo}</p>
-    </div>
+     </div>
   );
 }

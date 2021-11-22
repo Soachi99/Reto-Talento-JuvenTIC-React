@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
 import "./mostrar-info-contacto.css";
 
 const admin = JSON.parse(localStorage.getItem("admin_view"));
@@ -7,20 +6,14 @@ const admin = JSON.parse(localStorage.getItem("admin_view"));
 export default function MostrarContacto() {
 
   const [comentarios, setComentarios] = useState([]);
-  
-  /*useEffect(() => {
-    axios.get("http://localhost:3001/api/comentarios")
-      .then(res => setComentarios(res.data));   
-  }, [comentarios]);      */
+    
 
  useEffect(() => {
     fetch("http://localhost:3001/api/comentarios")
       .then(res => res.json())
       .then(data => setComentarios(data))
  }, [])  
-  
-  console.log(comentarios.length)
-
+    
   if (!admin) {
     return (
       <div className="bienvenido-principal">
