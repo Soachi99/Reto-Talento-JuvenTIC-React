@@ -9,11 +9,12 @@ import './personal.css'
 const admin = JSON.parse(localStorage.getItem("admin_view"));
 
 export default function Personal() {
-
+    
     const [getPersonal, SetgetPersonal] = useState([]);
     const [data, setData] = useState([]);
     const [ModalAgregar, SetModalAgregar] = useState(false);
-    const [nuevoDato, setnuevoDato] = useState({
+    const [ModalEditar, SetModalEditar] = useState(false);
+    const [nuevoDato, setnuevoDato] = useState({                
         nombre: "",
         cargo: "",
         imagen_url: ""
@@ -24,30 +25,35 @@ export default function Personal() {
             {...nuevoDato, [e.target.name] : e.target.value}
         );
     }
-
-    useEffect(() => {
+    
+    const peticionGET = () => {
         fetch("http://localhost:3001/api/personal")
             .then(res => res.json())
             .then(data => SetgetPersonal(data))
             .catch(error => console.log(error))
-    }, []);
+    }
 
-    const peticionPost = async () => {
-        ToogleModalAgregar();
-        Swal.fire({
-            icon: 'success',
-            title: 'Completado',
-            text: 'El servicio se ha agregado correctamente a la base de datos',
-            confirmButtonColor: '#3085d6'
-        })     
-        const enviar = await axios.post("http://localhost:3001/api/personal", nuevoDato)
-        const datos = enviar.data;
-        return datos;
+    const peticionPost = async () => {                           
+        await axios.post("http://localhost:3001/api/personal", nuevoDato)
+            .then(response => {
+                setnuevoDato(data.concat(response.data))
+                ToogleModalAgregar();                
+            })
+            .catch(error => console.error(error))
     }
 
     const ToogleModalAgregar = () =>{
         SetModalAgregar(!ModalAgregar);
     }
+
+    const ToogleModalEditar = () => {
+        SetModalEditar(!ModalEditar);
+    }
+
+    useEffect(() => { peticionGET(); }, []);
+
+    const id = getPersonal.map(persona => persona.id);
+    console.log(id)
        
     if(!admin) {
         return (
@@ -77,22 +83,23 @@ export default function Personal() {
                     <Modal isOpen={ModalAgregar}>
                         <ModalHeader>Agregar nuevo empleado</ModalHeader>
                         <ModalBody>
-                            <Form onSubmit={peticionPost}>
-                                <Form.Group className="mb-3">
-                                    <Form.Label>Nombre:</Form.Label>
-                                    <Form.Control type="text" placeholder="Nombre" name="nombre" onChange={handleChange} required/>
-                                    <br />
-                                    <Form.Label>Cargo:</Form.Label>
-                                    <Form.Control type="text" rows={3}  placeholder="cargo" name="cargo" onChange={handleChange} required/>
-                                    <Form.Label>URL de la imagen:</Form.Label>
-                                    <Form.Control type="url" rows={3}  placeholder="url de la imagen" name="imagen_url" onChange={handleChange} required/>                            
-                                </Form.Group>
-                            </Form>
-                        </ModalBody>
-                        <ModalFooter>
-                            <Button type="submit" variant="primary" onClick={() => peticionPost()} >Agregar</Button>
+                            <form action="http://localhost:3001/api/personal" method="POST" onSubmit={peticionPost}>
+                                <div className="mb-3">
+                                    <label htmlFor="" className="form-label">Nombre:</label>
+                                    <input type="text" className="form-control" name="nombre" placeholder="nombre" onChange={handleChange} required />
+                                </div>
+                                <div className="mb-3">
+                                    <label htmlFor="" className="form-label">Cargo:</label>
+                                    <input type="text" className="form-control" name="cargo" placeholder="cargo" onChange={handleChange} required />
+                                </div>
+                                <div className="mb-3">
+                                    <label htmlFor="" className="form-label">URL de la imagen</label>
+                                    <input type="url" className="form-control" name="imagen_url" placeholder="URL de la imagen" onChange={handleChange} required />
+                                </div>
+                            <Button type="submit" variant="primary" >Agregar</Button>
                             <Button className="ms-3" onClick={() => ToogleModalAgregar()} variant="danger">Cancelar</Button>
-                        </ModalFooter>
+                            </form>
+                        </ModalBody>
                     </Modal>                    
                 </>
             );            
@@ -117,23 +124,26 @@ export default function Personal() {
                     <Modal isOpen={ModalAgregar}>
                         <ModalHeader>Agregar nuevo empleado</ModalHeader>
                         <ModalBody>
-                            <Form onSubmit={peticionPost}>
-                                <Form.Group className="mb-3">
-                                    <Form.Label>Nombre</Form.Label>
-                                    <Form.Control type="text" placeholder="Nombre" name="nombre" onChange={handleChange} required/>
-                                    <br />
-                                    <Form.Label>Cargo</Form.Label>
-                                    <Form.Control input="text" rows={3}  placeholder="cargo" name="cargo" onChange={handleChange} required/>
-                                    <Form.Label>URL de la imagen</Form.Label>
-                                    <Form.Control input="url" rows={3}  placeholder="cargo" name="imagen_url" onChange={handleChange} required/>                            
-                                </Form.Group>
-                            </Form>
-                        </ModalBody>
-                        <ModalFooter>
-                            <Button type="submit" variant="primary" onClick={() => peticionPost()} >Agregar</Button>
+                            <form action={`http://localhost:3001/api/personal/edit/${getPersonal.id}`} method="POST" onSubmit={peticionPost}>
+                                <div className="mb-3">
+                                    <label htmlFor="" className="form-label">Nombre:</label>
+                                    <input type="text" className="form-control" name="nombre" placeholder="nombre" onChange={handleChange} required />
+                                </div>
+                                <div className="mb-3">
+                                    <label htmlFor="" className="form-label">Cargo:</label>
+                                    <input type="text" className="form-control" name="cargo" placeholder="cargo" onChange={handleChange} required />
+                                </div>
+                                <div className="mb-3">
+                                    <label htmlFor="" className="form-label">URL de la imagen</label>
+                                    <input type="url" className="form-control" name="imagen_url" placeholder="URL de la imagen" onChange={handleChange} required />
+                                </div>                            
+                            <Button type="submit" variant="primary" >Agregar</Button>
                             <Button className="ms-3" onClick={() => ToogleModalAgregar()} variant="danger">Cancelar</Button>
+                            </form>
+                        <ModalFooter>
                         </ModalFooter>
-                    </Modal>                    
+                        </ModalBody>
+                    </Modal>                                    
                 </>
             );
         }

@@ -34,7 +34,6 @@ import GestorPlatos from './components/Admin/gestorPlatos';
 import GestorServicios from './components/Admin/gestorServicios';
 import Personal from './components/Admin/Personal';
 
-
 function App() {
   return (
     <div className="App">
