@@ -65,7 +65,7 @@ const Pedidos = () => {
             {data.map(info => {
                 //var productos = JSON.parse(info.productos);
                 return (
-                    <Card style={{ width: '22rem' }} className="card-pedidos mt-4 me-5 ms-5 border-dark mb-3 shadow d-block mx-auto" key={"pedido" + info.id}>
+                    <Card style={{ width: '22rem' }} className="card-pedidos mt-4 mx-auto border-dark mb-3 shadow" key={"pedido" + info.id}>
                         <Card.Body>
                             <Card.Title>Pedido {info.fecha} </Card.Title>
                             <Card.Text key={"Texto1" + info.id}>

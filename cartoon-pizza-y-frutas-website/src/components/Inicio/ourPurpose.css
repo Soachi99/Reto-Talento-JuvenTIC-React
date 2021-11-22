@@ -28,3 +28,24 @@
     left: 29.5%;
     font-size: 1.8vw;
 }
+
+@media (max-width: 1080px) {
+    .nosotros h1{        
+        top: 8%;        
+    }
+    .nosotros p{
+        top: 28%;
+    }
+}
+
+@media (max-width: 500px) {
+    .nosotros h1{        
+        top: 2%;        
+    }
+    .nosotros p{
+        top: 27%;
+        width: 80%;
+        left: 10.5%;
+        font-size: 2.5vw;
+    }
+}

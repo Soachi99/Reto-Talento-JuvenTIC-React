@@ -164,9 +164,6 @@
     font-size: 3vw;
 }
 
-
-
-    
     .carousel-caption button{
         color: white;
         background: transparent;
@@ -187,6 +184,80 @@
         position: absolute;
         top: 62.5%;
         left: 39%;
+    }
+
+    .carousel-caption #third_btn{
+        position: absolute;
+        top: 56%;
+        right: 42%;
+    }
+    
+    
+}
+
+@media (max-width: 500px) {
+
+    /*Primera imagen carrusel*/
+
+.carousel-caption #first_capt{
+    position: absolute;    
+    right: 15%;
+    top: 18%;
+    font-size: 5vw;
+}
+
+.carousel-caption #text_first_capt{
+    visibility: hidden;
+}
+
+.carousel-caption #second_capt{
+    position: absolute; 
+    text-align: right;
+    width: 40%;
+    height: auto;   
+    left: 16%;
+    top: 15%;
+    font-size: 4vw;
+}
+
+.carousel-caption #text_second_capt{
+    visibility: hidden;
+}
+
+.carousel-caption #third_capt{
+    position: absolute; 
+    text-align: left;
+    width: 40%;
+    height: auto;   
+    right: 18%;
+    top: 20%;
+    font-size: 4vw;
+}
+
+.carousel-caption #text_third_capt{
+    visibility: hidden;
+}
+
+    .carousel-caption button{
+        color: white;
+        background: transparent;
+        font-size: 3vw;
+        padding: 1vw 1.5vw;
+        border: 1px solid white;
+        cursor: pointer;    
+        border-radius: 5px;
+    }
+
+    .carousel-caption #first_btn{
+        position: absolute;
+        top: 60%;
+        right: 25%;
+    }
+
+    .carousel-caption #second_btn{
+        position: absolute;
+        top: 62.5%;
+        left: 37%;
     }
 
     .carousel-caption #third_btn{
