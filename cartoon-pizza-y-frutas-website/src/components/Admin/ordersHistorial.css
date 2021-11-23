@@ -12,6 +12,7 @@
     background-color: rgba(161, 161, 161, 0.1);
 }
 
+
 @media (max-width: 1800px) {
     .historial-container{
         grid-template-columns: repeat(3, 1fr);

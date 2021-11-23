@@ -4,12 +4,14 @@ import { Card, Button } from "react-bootstrap";
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { Form } from "react-bootstrap";
 import Swal from "sweetalert2";
+import Cargando from "../loading";
 
 
 export default function GestorServicios() {
 
     const baseUrl = "https://api-cartoon-pizza20211121114915.azurewebsites.net/api/servicios";
     const [data, setData] = useState([]);
+    const [carga, setCarga] = useState(true);
     const [ModalAgregar, SetModalAgregar] = useState(false);
     const [ModalEditar, SetModalEditar] = useState(false);
     const [ModalEliminar, SetModalEliminar] = useState(false);
@@ -27,34 +29,36 @@ export default function GestorServicios() {
         );
     }
 
-    const ToogleModalAgregar = () =>{
+    const ToogleModalAgregar = () => {
         SetModalAgregar(!ModalAgregar);
     }
 
-    const ToogleModalEditar = () =>{
+    const ToogleModalEditar = () => {
         SetModalEditar(!ModalEditar);
     }
 
-    const ToogleModalEliminar = () =>{
+    const ToogleModalEliminar = () => {
         SetModalEliminar(!ModalEliminar);
     }
 
-    const SelectOpcion = (datos, caso) =>{
+    const SelectOpcion = (datos, caso) => {
         setNewData(datos);
-        if(caso === "Editar")
-        {
+        if (caso === "Editar") {
             ToogleModalEditar();
         }
-        if(caso === "Eliminar"){
+        if (caso === "Eliminar") {
             ToogleModalEliminar();
         }
-    }    
-
-    const peticionGet = async () => {
-        await axios.get(baseUrl).then(response => setData(response.data)).catch(error => console.error(error));
     }
 
-    const peticionPost = async() => {
+    const peticionGet = async () => {
+        await axios.get(baseUrl).then(response => {
+            setData(response.data);
+            setCarga(false);
+        }).catch(error => console.error(error));
+    }
+
+    const peticionPost = async () => {
         delete NewData.id;
         await axios.post(baseUrl, NewData).then(response => {
             setData(data.concat(response.data));
@@ -68,13 +72,13 @@ export default function GestorServicios() {
         }).catch(error => console.error(error));
     }
 
-    const peticionPut = async() =>{
-        await axios.put(baseUrl + "/" + NewData.id, NewData).then(response=>{
+    const peticionPut = async () => {
+        await axios.put(baseUrl + "/" + NewData.id, NewData).then(response => {
             var res = response.data;
-            var dataAux = data;            
+            var dataAux = data;
             // eslint-disable-next-line array-callback-return
-            dataAux.map(datos =>{
-                if(datos.id === NewData.id){
+            dataAux.map(datos => {
+                if (datos.id === NewData.id) {
                     datos.nombre = res.nombre;
                     datos.descripcion = res.descripcion;
                 }
@@ -89,7 +93,7 @@ export default function GestorServicios() {
         })
     }
 
-    const peticionDelete = async() =>{
+    const peticionDelete = async () => {
         await axios.delete(baseUrl + "/" + NewData.id).then(response => {
             setData(data.filter(datos => datos.id !== response.data));
             ToogleModalEliminar();
@@ -108,45 +112,45 @@ export default function GestorServicios() {
         <>
             <h1 className="text-center mt-4"> Gestiona los servicios del restaurante </h1>
             <Button className="d-block mx-auto mt-5" variant="dark" onClick={() => ToogleModalAgregar()}>Agregar Nuevo Servicio</Button>
+            <Cargando isOpen={carga} />
+            <div className="servicios-container">                
+                {data.map(servicios => {
+                    return (
+                        <Card key={"servicios" + servicios.id} className="cards border-light mt-5 mb-5 " style={{ width: '22rem', height: '18rem', margin: ' 10px auto' }}>
+                            <Card.Body className="body rounded-2" style={{ padding: '10px 10px', textAlign: 'center' }}>
+                                <div className="front">
+                                    <Card.Title className="text-center fs-3 mt-3 text-black fw-bold">{servicios.nombre}</Card.Title>
+                                    <Card.Text className="text-center fs-5 text-black">
+                                        {servicios.descripcion}
+                                    </Card.Text>
+                                </div>
 
-            <div className="servicios-container">
-            {data.map(servicios => {
-                return (
-                    <Card key={"servicios" + servicios.id} className="cards border-light mt-5 mb-5 " style={{ width: '22rem', height: '18rem', margin: ' 10px auto' }}>
-                        <Card.Body className="body rounded-2" style={{padding:'10px 10px' ,textAlign: 'center'}}>
-                        <div className="front">                        
-                            <Card.Title className="text-center fs-3 mt-3 text-black fw-bold">{servicios.nombre}</Card.Title>
-                            <Card.Text className="text-center fs-5 text-black">
-                                {servicios.descripcion}
-                            </Card.Text>
-                        </div>
-                        
-                            <div className="back ">
-                                <Button
-                                    className="boton-services d-block mx-auto"
-                                    variant="light"
-                                    id={"editar_" + servicios.id}
-                                    key={"editar_" + servicios.id}
-                                    onClick = {() => SelectOpcion(servicios,"Editar")}
-                                >
-                                    Editar
-                                </Button>
-                                <Button
-                                    className="d-block mx-auto mt-3"
-                                    variant="danger"
-                                    id={"eliminar_" + servicios.id}
-                                    style={{ backgroundColor: "red" }}
-                                    onClick = {() => SelectOpcion(servicios,"Eliminar")}  
-                                >
-                                    Eliminar
-                                </Button>
-                            </div>
-                        </Card.Body>
-                    </Card>
-                )
-            })
+                                <div className="back ">
+                                    <Button
+                                        className="boton-services d-block mx-auto"
+                                        variant="light"
+                                        id={"editar_" + servicios.id}
+                                        key={"editar_" + servicios.id}
+                                        onClick={() => SelectOpcion(servicios, "Editar")}
+                                    >
+                                        Editar
+                                    </Button>
+                                    <Button
+                                        className="d-block mx-auto mt-3"
+                                        variant="danger"
+                                        id={"eliminar_" + servicios.id}
+                                        style={{ backgroundColor: "red" }}
+                                        onClick={() => SelectOpcion(servicios, "Eliminar")}
+                                    >
+                                        Eliminar
+                                    </Button>
+                                </div>
+                            </Card.Body>
+                        </Card>
+                    )
+                })
 
-            }
+                }
             </div>
 
             <Modal isOpen={ModalAgregar}>
@@ -155,10 +159,10 @@ export default function GestorServicios() {
                     <Form>
                         <Form.Group className="mb-3">
                             <Form.Label>Nombre</Form.Label>
-                            <Form.Control type="text" placeholder="Nombre" name="nombre" onChange={handleChange} required/>
+                            <Form.Control type="text" placeholder="Nombre" name="nombre" onChange={handleChange} required />
                             <br />
                             <Form.Label>Descripción</Form.Label>
-                            <Form.Control as="textarea" rows={3}  placeholder="Descripción" name="descripcion" onChange={handleChange} required/>                            
+                            <Form.Control as="textarea" rows={3} placeholder="Descripción" name="descripcion" onChange={handleChange} required />
                         </Form.Group>
                     </Form>
                 </ModalBody>
@@ -174,13 +178,13 @@ export default function GestorServicios() {
                     <Form>
                         <Form.Group className="mb-3">
                             <Form.Label>ID</Form.Label>
-                            <Form.Control type="text" placeholder="id" name="id" readOnly value={NewData && NewData.id} required/>
+                            <Form.Control type="text" placeholder="id" name="id" readOnly value={NewData && NewData.id} required />
                             <br />
                             <Form.Label>Nombre</Form.Label>
-                            <Form.Control type="text" placeholder="Nombre" name="nombre" onChange={handleChange} value={NewData && NewData.nombre} required/>
+                            <Form.Control type="text" placeholder="Nombre" name="nombre" onChange={handleChange} value={NewData && NewData.nombre} required />
                             <br />
                             <Form.Label>Descripción</Form.Label>
-                            <Form.Control as="textarea" rows={3} placeholder="Descripción" name="descripcion" onChange={handleChange} value={NewData && NewData.descripcion} required/>                            
+                            <Form.Control as="textarea" rows={3} placeholder="Descripción" name="descripcion" onChange={handleChange} value={NewData && NewData.descripcion} required />
                         </Form.Group>
                     </Form>
                 </ModalBody>

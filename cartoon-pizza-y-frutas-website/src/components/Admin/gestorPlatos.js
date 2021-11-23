@@ -4,10 +4,12 @@ import { Button, Card } from "react-bootstrap";
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { Form } from "react-bootstrap";
 import Swal from "sweetalert2";
+import Cargando from "../loading";
 
 export default function GestorPlatos() {
     const baseurl = "https://api-cartoon-pizza20211121114915.azurewebsites.net/api/productos"
     const [data, setData] = useState([]);
+    const [carga, setCarga] = useState(true);
     const [ModalAgregar, SetModalAgregar] = useState(false);
     const [ModalEditar, SetModalEditar] = useState(false);
     const [ModalEliminar, SetModalEliminar] = useState(false);
@@ -52,7 +54,12 @@ export default function GestorPlatos() {
     }
 
     const peticionGet = async () => {
-        await axios.get(baseurl).then(response => setData(response.data)).catch(error => console.error(error));
+        await axios.get(baseurl).then(
+            response =>{
+                setData(response.data);
+                setCarga(false);
+            } 
+            ).catch(error => console.error(error));
     }
 
     const peticionPost = async() => {
@@ -115,13 +122,16 @@ export default function GestorPlatos() {
 
     useEffect(() => { peticionGet(); }, []);
 
+   
+
+
     return (
         <>
             <h1 className="text-center mt-4 ms-4"> Gestiona los productos de tu restaurante</h1>
             <Button className="d-block mx-auto mt-5" variant="dark" onClick={() => ToogleModalAgregar()}>Agregar Nuevo Producto</Button>
-            <div className="contenedor_productos mt-5 me-5 ms-5">
-
-                {data.map(product => {
+            <div className="contenedor_productos mt-5 me-5 ms-5">    
+                <Cargando isOpen={carga} />
+                {data.map(product => {                    
                     return (
                         <Card className="card-productos mt-3" key={product.id}>
                             <Card.Img
@@ -170,9 +180,10 @@ export default function GestorPlatos() {
 
                             </Card.Body>
                         </Card>
-
-                    );
-                })}
+                    );                    
+                })                     
+                }
+               
 
             </div>
 

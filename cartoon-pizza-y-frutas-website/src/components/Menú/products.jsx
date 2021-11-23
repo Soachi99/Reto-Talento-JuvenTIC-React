@@ -8,15 +8,20 @@ import { addCarrito } from "../../js/buttons_menu.js";
 import { useState } from "react";
 import ProductModal from "./productModal";
 import axios from "axios";
+import Cargando from "../loading";
 
 
 const General = () => {
 
     const baseUrl = "https://api-cartoon-pizza20211121114915.azurewebsites.net/api/productos";
     const [data, setData] = useState([]);
+    const [carga, setCarga] = useState(true);
 
     const peticionGet = async () =>{
-        await axios.get(baseUrl).then(response => setData(response.data)).catch(error => console.error(error));
+        await axios.get(baseUrl).then(response =>{
+            setData(response.data);
+            setCarga(false);
+        }).catch(error => console.error(error));
     }
 
     const [model, setModel] = useState(false);
@@ -32,6 +37,7 @@ const General = () => {
 
     return (
         <>
+            <Cargando isOpen={carga}/>
             <div className="contenedor_productos mt-5 me-5 ms-5">
 
                 {data.map(product => {

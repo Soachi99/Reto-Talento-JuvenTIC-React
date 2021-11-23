@@ -33,6 +33,7 @@ import Servicios from './components/Servicios/eventsContainer';
 import GestorPlatos from './components/Admin/gestorPlatos';
 import GestorServicios from './components/Admin/gestorServicios';
 import Personal from './components/Admin/Personal';
+import Cargando from './components/loading';
 
 function App() {
   return (

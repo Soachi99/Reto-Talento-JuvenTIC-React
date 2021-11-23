@@ -1,11 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Card, Button } from "react-bootstrap";
+import Cargando from "../loading";
 
 
 const Pedidos = () => {
     const baseUrl = "https://api-cartoon-pizza20211121114915.azurewebsites.net/api/pedidos";
     const [data, setData] = useState([]);
+    const [carga, setCarga] = useState(true);
 
     var detalles = false;
 
@@ -54,7 +56,10 @@ const Pedidos = () => {
     }
 
     const peticionGet = async () => {
-        await axios.get(baseUrl).then(response => setData(response.data)).catch(error => console.error(error));
+        await axios.get(baseUrl).then(response => {
+            setData(response.data);
+            setCarga(false);
+        }).catch(error => console.error(error));
     }
 
     useEffect(() => { peticionGet(); }, [])
@@ -62,10 +67,13 @@ const Pedidos = () => {
 
     return (
         <>
+            <Cargando isOpen={carga} className="cargapizza"/>
+            <div className="historial-container mb-5">
             {data.map(info => {
                 //var productos = JSON.parse(info.productos);
-                return (
+                return (                    
                     <Card style={{ width: '22rem' }} className="card-pedidos mt-4 mx-auto border-dark mb-3 shadow" key={"pedido" + info.id}>
+                        
                         <Card.Body>
                             <Card.Title>Pedido {info.fecha} </Card.Title>
                             <Card.Text key={"Texto1" + info.id}>
@@ -86,6 +94,7 @@ const Pedidos = () => {
                 )
             }
             )}
+            </div>
         </>
     );
 
