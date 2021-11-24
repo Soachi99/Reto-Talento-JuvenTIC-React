@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import Cargando from "../loading";
 import "./mostrarReserva.css";
 
 const admin = JSON.parse(localStorage.getItem("admin_view"));
@@ -6,39 +8,22 @@ const admin = JSON.parse(localStorage.getItem("admin_view"));
 
 export default function MostrarReserva() {
 
+  const [carga, setCarga] = useState(true)
   const [reserva, setReserva] = useState([]);
+  const { isAuthenticated } = useAuth0();
 
   useEffect(() => {
     fetch("http://localhost:3001/api/reserva")
       .then(res => res.json())
-      .then(data => setReserva(data))
+      .then(data => {
+        setReserva(data)
+        setCarga(false)})
  }, [])  
-
-  console.log(reserva.length)
-
-  if (!admin) {
-    return (
-      <div className="bienvenido-principal">
-        <div className="bienvenido carousel-caption">
-          <h1 className="mt-5">
-            {" "}
-            <b>
-              {" "}
-              No tienes permisos para entrar a esta pagina o no te has logeado{" "}
-            </b>{" "}
-          </h1>
-          <img
-            src={process.env.PUBLIC_URL + "/images/Logo.png"}
-            className="logo-admin img-fluid d-block mx-auto mt-5"
-            alt="Logo admin"
-          />
-        </div>
-      </div>
-    );
-  } else {
+ 
     if(reserva.length === 0) {
       return(
         <div>
+          <Cargando isOpen={carga} className="cargapizza"/>
           <div className="m-bottom">
             <h1>Reservas realizadas</h1>
             <h2 className="mt-4">No hay reservas por el momento</h2>
@@ -48,6 +33,7 @@ export default function MostrarReserva() {
     } else {
       return(
         <>
+        <Cargando isOpen={carga} className="cargapizza"/>
         <h1>Reservas Realizadas</h1>
           <div className="contenedor-reserva">
             {reserva.map(r => (
@@ -66,6 +52,5 @@ export default function MostrarReserva() {
           </div>
         </>
       );
-    }
-  }  
+    }  
 }

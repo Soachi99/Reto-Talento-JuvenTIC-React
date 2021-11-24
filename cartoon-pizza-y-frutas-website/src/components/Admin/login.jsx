@@ -1,40 +1,54 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import { Login, Logout } from "../../js/login";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Redirect, Route, BrowserRouter as Router } from "react-router-dom";
+import Topbar from "../topbar";
 import "./login.css";
 
-class LoginButton extends React.Component {
-    render() {
+function LoginButton () {
 
-        if (localStorage.getItem('admin_view') == null || localStorage.getItem('admin_view') === false) {
-            return (
-                <>
-                    <Button
-                        variant="dark"
-                        id="login-button"
-                        className="fs-bold"
-                        onClick={() => Login()}
-                    >
-                        <b> Login </b>
-                    </Button>
-                </>
-            );
-        }
-        else {
-            return (
-                <>
-                    <Button
-                        variant="dark"
-                        id="login-button"
-                        className="fs-bold"
-                        onClick={() => Logout()}
-                    >
-                        <b> Log out </b>
-                    </Button>
-                </>
-            );
-        }
+    const { loginWithRedirect, logout, isAuthenticated } = useAuth0();   
+    
+    const redirect = () => {
+        window.location.href = "/admin";
+        loginWithRedirect();
+    }
+
+    if(!isAuthenticated) {
+        return(
+            <>
+                <Button
+                    variant="dark"
+                    id="login-button"
+                    className="fs-bold"                    
+                    onClick={redirect}
+                >
+                    <b> Login </b>
+                </Button>
+            </> 
+        );
+    } else {
+        return(
+            <>             
+            <Router>
+                <Route exact path="/">
+                <Redirect to="/admin" />     
+                </Route>
+                <Button
+                    variant="dark"
+                    id="login-button"
+                    className="fs-bold"
+                    onClick={() => logout()}
+                >
+                    <b> LogOut </b>
+                </Button>           
+            </Router>                     
+            </> 
+        );
+
     }
 }
 
 export default LoginButton;
+
+

@@ -1,42 +1,26 @@
 import React, { useState, useEffect } from "react";
 import "./mostrar-info-contacto.css";
+import Cargando from "../loading";
 
 const admin = JSON.parse(localStorage.getItem("admin_view"));
 
 export default function MostrarContacto() {
 
-  const [comentarios, setComentarios] = useState([]);
-    
-
+  const [comentarios, setComentarios] = useState([]);  
+  const [carga, setCarga] = useState(true)
+  
  useEffect(() => {
     fetch("http://localhost:3001/api/comentarios")
       .then(res => res.json())
-      .then(data => setComentarios(data))
+      .then(data => {
+        setComentarios(data)
+        setCarga(false)})
  }, [])  
     
-  if (!admin) {
-    return (
-      <div className="bienvenido-principal">
-        <div className="bienvenido carousel-caption">
-          <h1 className="mt-5">
-            {" "}
-            <b>
-              {" "}
-              No tienes permisos para entrar a esta pagina o no te has logeado{" "}
-            </b>{" "}
-          </h1>
-          <img
-            src={process.env.PUBLIC_URL + "/images/Logo.png"}
-            className="logo-admin img-fluid d-block mx-auto mt-5"
-            alt="Logo admin"
-          />
-        </div>
-      </div>
-    );
-  } else {
     if (comentarios.length === 0) {
       return (
         <div>
+          <Cargando isOpen={carga} className="cargapizza"/>
           <div className="m-bottom">
             <h1 className="titulo-preguntas">
               Comentarios realizados
@@ -48,6 +32,7 @@ export default function MostrarContacto() {
     } else {
       return (
         <>
+        <Cargando isOpen={carga} className="cargapizza"/>
           <h1 className="titulo-preguntas">Comentarios realizados</h1>
           <div className="contenedor-preguntas">
             {comentarios.map((comentario) => (
@@ -75,5 +60,4 @@ export default function MostrarContacto() {
         </>
       );
     }
-  }
 }
