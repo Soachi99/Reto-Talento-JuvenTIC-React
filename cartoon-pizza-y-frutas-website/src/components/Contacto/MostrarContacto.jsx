@@ -19,8 +19,7 @@ export default function MostrarContacto() {
     
     if (comentarios.length === 0) {
       return (
-        <div>
-          <Cargando isOpen={carga} className="cargapizza"/>
+        <div>          
           <div className="m-bottom">
             <h1 className="titulo-preguntas">
               Comentarios realizados

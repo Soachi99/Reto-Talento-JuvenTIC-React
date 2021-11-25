@@ -22,8 +22,7 @@ export default function MostrarReserva() {
  
     if(reserva.length === 0) {
       return(
-        <div>
-          <Cargando isOpen={carga} className="cargapizza"/>
+        <div>          
           <div className="m-bottom">
             <h1>Reservas realizadas</h1>
             <h2 className="mt-4">No hay reservas por el momento</h2>

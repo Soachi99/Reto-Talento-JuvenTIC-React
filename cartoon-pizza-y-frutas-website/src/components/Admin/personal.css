@@ -6,3 +6,7 @@
 .cargo-admin {    
     color: #000;
 }
+.btn-agregar-personal {
+    border: 1px solid;
+    margin-bottom: 4rem;
+}
