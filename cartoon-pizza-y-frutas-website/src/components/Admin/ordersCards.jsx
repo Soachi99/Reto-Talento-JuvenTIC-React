@@ -69,7 +69,7 @@ const Pedidos = () => {
         <>
             <Cargando isOpen={carga} className="cargapizza"/>
             <div className="historial-container mb-5">
-            {data.map(info => {
+            {data.slice(0).reverse().map(info => {
                 //var productos = JSON.parse(info.productos);
                 return (                    
                     <Card style={{ width: '22rem' }} className="card-pedidos mt-4 mx-auto border-dark mb-3 shadow" key={"pedido" + info.id}>

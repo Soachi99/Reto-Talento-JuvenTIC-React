@@ -3,6 +3,12 @@ import Swal from "sweetalert2";
 import { cargarNumProducts } from "./num_products.js";
 
 
+const peticionPost = async(baseUrl, datospedido) =>{
+    await axios.post(baseUrl, datospedido).then(response => {
+        console.log("Subido a la base de datos", response.data);
+    }).catch(error => console.error(error));
+}
+
 export function Validarproductos() {
     /* eslint-disable */
     if (localStorage.getItem('productos') === null || localStorage.getItem('num_productos') === null || localStorage.getItem('num_productos') == 0) {
@@ -144,19 +150,8 @@ function emailADmin(nombre, email, comentarios) {
                 datospedido.numerop = parseInt(datospedido.numerop);
                 datospedido.productos = JSON.stringify(datos);
 
-                axios.post(baseUrl, datospedido);
-
-                // if (localStorage.getItem('pedidos') == null) {
-                //     let adddatos = []
-                //     adddatos.push(datospedido);
-                //     localStorage.setItem('pedidos', JSON.stringify(adddatos));
-
-                // } else {
-                //     let adddatos = JSON.parse(localStorage.getItem('pedidos'));
-                //     adddatos.push(datospedido);
-                //     localStorage.setItem('pedidos', JSON.stringify(adddatos));
-                // }
-
+                peticionPost(baseUrl, datospedido);
+                
                 localStorage.removeItem('productos');
                 localStorage.setItem('num_productos', 0);
                 cargarNumProducts();
