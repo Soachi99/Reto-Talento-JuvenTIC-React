@@ -33,3 +33,10 @@
         height: auto;
     }
 }
+
+
+@media (max-width: 500px) {
+    .bienvenido-principal{
+        height: 60vh;   
+    }
+}

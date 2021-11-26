@@ -3,13 +3,12 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Cargando from "../loading";
 import "./mostrarReserva.css";
 
-const admin = JSON.parse(localStorage.getItem("admin_view"));
-
 
 export default function MostrarReserva() {
 
   const [carga, setCarga] = useState(true)
   const [reserva, setReserva] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const { isAuthenticated } = useAuth0();
 
   useEffect(() => {

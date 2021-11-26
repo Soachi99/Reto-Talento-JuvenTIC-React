@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./contacto.css";
-import Swal from "sweetalert2";
 
 export default function Contacto() {
   const [asunto, setasunto] = useState("");

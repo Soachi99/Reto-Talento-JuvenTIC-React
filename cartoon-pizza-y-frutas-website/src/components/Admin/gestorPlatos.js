@@ -6,6 +6,7 @@ import { Form } from "react-bootstrap";
 import Swal from "sweetalert2";
 import Cargando from "../loading";
 
+
 export default function GestorPlatos() {
     const baseurl = "https://api-cartoon-pizza20211121114915.azurewebsites.net/api/productos"
     const [data, setData] = useState([]);
@@ -13,6 +14,7 @@ export default function GestorPlatos() {
     const [ModalAgregar, SetModalAgregar] = useState(false);
     const [ModalEditar, SetModalEditar] = useState(false);
     const [ModalEliminar, SetModalEliminar] = useState(false);
+   
 
     const [NewData, setNewData] = useState({
         id: '',
@@ -120,11 +122,10 @@ export default function GestorPlatos() {
         })
     }
 
-    useEffect(() => { peticionGet(); }, []);
+    useEffect(() => { peticionGet();  }, []);
 
    
-
-
+   
     return (
         <>
             <h1 className="text-center mt-4 ms-4"> Gestiona los productos de tu restaurante</h1>

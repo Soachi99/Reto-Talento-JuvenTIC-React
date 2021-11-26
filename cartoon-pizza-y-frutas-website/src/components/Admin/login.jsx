@@ -2,7 +2,6 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Redirect, Route, BrowserRouter as Router } from "react-router-dom";
-import Topbar from "../topbar";
 import "./login.css";
 
 function LoginButton () {

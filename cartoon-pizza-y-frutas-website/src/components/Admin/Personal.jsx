@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Card, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import { Form } from "react-bootstrap";
-import Swal from "sweetalert2";
 import axios from "axios";
 import './personal.css'
 import Cargando from "../loading";
-
-const admin = JSON.parse(localStorage.getItem("admin_view"));
 
 export default function Personal() {
     
     const [carga, setCarga] = useState(true);
     const [getPersonal, SetgetPersonal] = useState([]);
+    // eslint-disable-next-line no-unused-vars
     const [data, setData] = useState([]);
     const [ModalAgregar, SetModalAgregar] = useState(false);
     const [ModalEditar, SetModalEditar] = useState(false);
@@ -75,13 +72,15 @@ export default function Personal() {
 
     useEffect(() => { peticionGET(); }, []);
 
+    // eslint-disable-next-line no-unused-vars
     const id = getPersonal.map(persona => persona.id);    
        
     if(getPersonal.length < 1) {
         return(
-            <>                
-                <h1 className="empty-personal">Nuestro personal: {getPersonal.length} por ahora</h1>
-                <Button className="d-block mx-auto mt-5 btn-agregar-personal" variant="dark" onClick={() => ToogleModalAgregar()}>Agregar Nuevo Empleado</Button>
+            <>
+                <Cargando isOpen={carga} className="cargapizza" />
+                <h1>Nuestro personal: {getPersonal.length} por ahora</h1>
+                <Button className="d-block mx-auto mt-5 mb-5" variant="dark" onClick={() => ToogleModalAgregar()}>Agregar Nuevo Empleado</Button>
                 <Modal isOpen={ModalAgregar}>
                     <ModalHeader>Agregar nuevo empleado</ModalHeader>
                     <ModalBody>

@@ -33,87 +33,114 @@ import Servicios from './components/Servicios/eventsContainer';
 import GestorPlatos from './components/Admin/gestorPlatos';
 import GestorServicios from './components/Admin/gestorServicios';
 import Personal from './components/Admin/Personal';
-import Cargando from './components/loading';
+
+import { useAuth0 } from "@auth0/auth0-react";
 
 function App() {
-  return (
-    <div className="App">
-      <Topbar />
-      <Router>
-        <Switch>
-          <Route path="/carrito">
-            <Carrito />
-          </Route>
+  const { isAuthenticated } = useAuth0();
 
-          <Route path="/menu">
-            <Productos />
-          </Route>
+  if (!isAuthenticated) {
+    return (
+      <div className="App">
+        <Topbar />
+        <Router>
+          <Switch>
+            <Route path="/carrito">
+              <Carrito />
+            </Route>
 
-          <Route path="/nosotros">
-            <AboutUs />
-          </Route>
+            <Route path="/menu">
+              <Productos />
+            </Route>
 
-          <Route path="/contacto">
-            <Contacto />
-          </Route>
+            <Route path="/nosotros">
+              <AboutUs />
+            </Route>
 
-          <Route path="/servicios">
-            <Servicios />
-          </Route>
+            <Route path="/contacto">
+              <Contacto />
+            </Route>
 
-          <Route path="/reserva">
-            <Reserva />
-          </Route>
+            <Route path="/servicios">
+              <Servicios />
+            </Route>
 
-          <Route path="/enviar-contacto">
-            <EnviarContacto />
-          </Route>
+            <Route path="/reserva">
+              <Reserva />
+            </Route>
 
-          <Route path="/admin/preguntas">
-            <MostrarContacto />
-          </Route>
-
-          <Route path="/admin/servicios">
-            <GestorServicios />
-          </Route>
-
-          <Route path="/admin/platos">
-            <GestorPlatos />
-          </Route>
-
-          <Route path="/admin/reservas">
-            <MostrarReserva />
-          </Route>
-
-          <Route path="/admin/personal">
-            <Personal />
-          </Route>
-
-          <Route path="/admin/pedidos">
-            <HistorialPedidos />
-          </Route>
-
-          <Route path="/admin">
-            <Bienvenido />
-          </Route>
-
-          <Route path="/">
-            <Carousel />
-            <Nosotros />
-            <Recomendaciones />
-            <Eventos />
-            <Comentarios />
-          </Route>
+            <Route path="/enviar-contacto">
+              <EnviarContacto />
+            </Route>
 
 
-        </Switch>
-      </Router>
+            <Route path="/">
+              <Carousel />
+              <Nosotros />
+              <Recomendaciones />
+              <Eventos />
+              <Comentarios />
+            </Route>
 
-      <LoginButton />
-      <Footer />
 
-    </div>
-  );
+          </Switch>
+        </Router>
+
+        <LoginButton />
+        <Footer />
+
+      </div>
+    );
+  }
+  else {
+    return (
+      <div className="App">
+        <Topbar />
+        <Router>
+          <Switch>
+            <Route path="/admin/preguntas">
+              <MostrarContacto />
+            </Route>
+
+            <Route path="/admin/servicios">
+              <GestorServicios />
+            </Route>
+
+            <Route path="/admin/platos">
+              <GestorPlatos />
+            </Route>
+
+            <Route path="/admin/reservas">
+              <MostrarReserva />
+            </Route>
+
+            <Route path="/admin/personal">
+              <Personal />
+            </Route>
+
+            <Route path="/admin/pedidos">
+              <HistorialPedidos />
+            </Route>
+
+            <Route path="/admin">
+              <Bienvenido />
+            </Route>
+
+            <Route path="/">
+              <Bienvenido />
+            </Route>
+
+          </Switch>
+        </Router>
+
+        <LoginButton />
+        <Footer />
+
+      </div>
+
+    );
+  }
+
 }
 
 export default App;

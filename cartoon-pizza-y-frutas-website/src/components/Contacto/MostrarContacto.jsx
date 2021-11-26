@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./mostrar-info-contacto.css";
 import Cargando from "../loading";
 
-const admin = JSON.parse(localStorage.getItem("admin_view"));
 
 export default function MostrarContacto() {
 

@@ -15,6 +15,7 @@ function Topbar () {
 
     useEffect(() => {
         if(!isAuthenticated) {cargarNumProducts()}
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     if(!isAuthenticated) {        
