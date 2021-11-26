@@ -6,6 +6,14 @@
     background-size: cover;
 }
 
+.Cargando{
+    position: relative;
+    width: 100%;
+    height: 100vh;    
+    background: url("https://i.imgur.com/vh8gAP3.png") no-repeat center center fixed;
+    background-size: cover;
+}
+
 .bienvenido{        
     background-color: rgba(0, 0, 0, 0.65);
 }
