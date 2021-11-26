@@ -35,14 +35,17 @@ import GestorServicios from './components/Admin/gestorServicios';
 import Personal from './components/Admin/Personal';
 
 import { useAuth0 } from "@auth0/auth0-react";
+import NoAutorizado from './components/Admin/NoAuthorized';
+import LoadingPage from './components/Admin/Loadingpage';
 
 function App() {
-  const { isAuthenticated } = useAuth0();
+  const Auth = useAuth0().isAuthenticated;
+  const AuthLoading = useAuth0().isLoading;
 
-  if (!isAuthenticated) {
+  
     return (
       <div className="App">
-        <Topbar />
+         {!AuthLoading && <Topbar />}
         <Router>
           <Switch>
             <Route path="/carrito">
@@ -73,6 +76,47 @@ function App() {
               <EnviarContacto />
             </Route>
 
+            <Route path="/admin/preguntas">
+              {Auth && <MostrarContacto />}
+              {AuthLoading && <LoadingPage />}
+              {!Auth && <NoAutorizado />}
+            </Route>
+
+            <Route path="/admin/servicios">
+            {Auth &&<GestorServicios />}
+            {AuthLoading && <LoadingPage />}
+            {(!Auth && !AuthLoading) && <NoAutorizado />}
+            </Route>
+
+            <Route path="/admin/platos">
+            {Auth &&<GestorPlatos />}
+            {AuthLoading && <LoadingPage />}
+            {(!Auth && !AuthLoading)  && <NoAutorizado />}
+            </Route>
+
+            <Route path="/admin/reservas">
+            {Auth &&<MostrarReserva />}
+            {AuthLoading && <LoadingPage />}
+            {(!Auth && !AuthLoading)  && <NoAutorizado />}
+            </Route>
+
+            <Route path="/admin/personal">
+            {Auth &&<Personal />}
+            {AuthLoading && <LoadingPage />}
+            {(!Auth && !AuthLoading)  && <NoAutorizado />}
+            </Route>
+
+            <Route path="/admin/pedidos">
+            {Auth &&<HistorialPedidos />}
+            {AuthLoading && <LoadingPage />}
+            {(!Auth && !AuthLoading)  && <NoAutorizado />}
+            </Route>
+
+            <Route path="/admin">
+            {Auth && <Bienvenido />}
+            {AuthLoading && <LoadingPage />}
+            {(!Auth && !AuthLoading) && <NoAutorizado />}
+            </Route>
 
             <Route path="/">
               <Carousel />
@@ -86,60 +130,13 @@ function App() {
           </Switch>
         </Router>
 
-        <LoginButton />
-        <Footer />
+        {!AuthLoading && <LoginButton />}
+        {!AuthLoading && <Footer />}
 
       </div>
-    );
-  }
-  else {
-    return (
-      <div className="App">
-        <Topbar />
-        <Router>
-          <Switch>
-            <Route path="/admin/preguntas">
-              <MostrarContacto />
-            </Route>
+    ); 
+      
 
-            <Route path="/admin/servicios">
-              <GestorServicios />
-            </Route>
-
-            <Route path="/admin/platos">
-              <GestorPlatos />
-            </Route>
-
-            <Route path="/admin/reservas">
-              <MostrarReserva />
-            </Route>
-
-            <Route path="/admin/personal">
-              <Personal />
-            </Route>
-
-            <Route path="/admin/pedidos">
-              <HistorialPedidos />
-            </Route>
-
-            <Route path="/admin">
-              <Bienvenido />
-            </Route>
-
-            <Route path="/">
-              <Bienvenido />
-            </Route>
-
-          </Switch>
-        </Router>
-
-        <LoginButton />
-        <Footer />
-
-      </div>
-
-    );
-  }
 
 }
 
