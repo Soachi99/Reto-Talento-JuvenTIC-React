@@ -5,7 +5,19 @@ import { cargarNumProducts } from "./num_products.js";
 
 const peticionPost = async(baseUrl, datospedido) =>{
     await axios.post(baseUrl, datospedido).then(response => {
-        console.log("Subido a la base de datos", response.data);
+        Swal.fire({
+            icon: 'success',
+            title: 'Completado',
+            text: 'Sus productos se han reservado correctamente, una copia con el pedido llegara a su correo',
+            confirmButtonColor: '#3085d6'
+        }).then((result) => {
+            if (result.isConfirmed) {                                
+                localStorage.removeItem('productos');
+                localStorage.setItem('num_productos', 0);
+                cargarNumProducts();
+                window.location.reload(false);
+            }
+        })       
     }).catch(error => console.error(error));
 }
 
@@ -122,41 +134,41 @@ function emailADmin(nombre, email, comentarios) {
         Subject: "Copia confirmación de los productos reservados ",
         Body: contentHtml
     }).then(
-        Swal.fire({
-            icon: 'success',
-            title: 'Completado',
-            text: 'Sus productos se han reservado correctamente, una copia con el pedido llegara a su correo',
-            confirmButtonColor: '#3085d6'
-        }).then((result) => {
-            if (result.isConfirmed) {
-
-                const baseUrl = "https://api-cartoon-pizza20211121114915.azurewebsites.net/api/pedidos";    
-                let fecha = new Date();
-                var dia = fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear() + "  " + fecha.getHours() + ":"
-                    + fecha.getMinutes() + ":"
-                    + fecha.getSeconds();
-
-                const datospedido = {
-                    fecha: dia,
-                    nombre: nombre,
-                    email: email,
-                    comentarios: comentarios,
-                    total: final_total,
-                    numerop: numP,
-                    productos: datos
-                }
-
-                datospedido.total = parseInt(datospedido.total);
-                datospedido.numerop = parseInt(datospedido.numerop);
-                datospedido.productos = JSON.stringify(datos);
-
-                peticionPost(baseUrl, datospedido);
-                
-                localStorage.removeItem('productos');
-                localStorage.setItem('num_productos', 0);
-                cargarNumProducts();
-                window.location.reload(false);
-            }
-        })
+        SaveDataPost(nombre, email, comentarios, final_total,numP, datos)        
     );
+}
+
+function SaveDataPost(nombre, email, comentarios, final_total,numP, datos){
+    let fecha = new Date();
+    var dia = fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear() + "  " + fecha.getHours() + ":"
+        + fecha.getMinutes() + ":"
+        + fecha.getSeconds();
+
+    const datospedido = {
+        fecha: dia,
+        nombre: nombre,
+        email: email,
+        comentarios: comentarios,
+        total: final_total,
+        numerop: numP,
+        productos: datos
+    }
+
+    datospedido.total = parseInt(datospedido.total);
+    datospedido.numerop = parseInt(datospedido.numerop);
+    datospedido.productos = JSON.stringify(datos);
+
+    const baseUrl = "https://api-cartoon-pizza20211121114915.azurewebsites.net/api/pedidos";     
+    
+    Swal.fire({
+        title: 'Cargando su pedido a nuestra base de datos',
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+        timer: 3000,
+        didOpen: () => {
+            Swal.showLoading();
+          }
+    })
+
+    peticionPost(baseUrl, datospedido);
 }
