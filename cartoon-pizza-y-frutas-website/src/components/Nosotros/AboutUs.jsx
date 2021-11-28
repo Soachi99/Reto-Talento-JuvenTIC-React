@@ -10,7 +10,7 @@ export default function AboutUs() {
   const [personal, setPersonal] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/api/personal")
+    fetch("https://backend-cartoon-pizza-frutas.azurewebsites.net/api/personal")
       .then(res => res.json())
       .then(data => setPersonal(data))
       .catch(error => console.log(error))

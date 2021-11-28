@@ -12,7 +12,7 @@ export default function MostrarReserva() {
   const { isAuthenticated } = useAuth0();
 
   useEffect(() => {
-    fetch("http://localhost:3001/api/reserva")
+    fetch("https://backend-cartoon-pizza-frutas.azurewebsites.net/api/reserva")
       .then(res => res.json())
       .then(data => {
         setReserva(data)
@@ -44,7 +44,7 @@ export default function MostrarReserva() {
                 <p><span>Fecha: </span>{r.fecha}</p>
                 <p><span>Hora: </span>{r.hora}</p>
                 <p><span>Indicacion especial: </span>{r.indicacion_especial}</p>
-                <a className="mt-2 p-2 btn btn-danger" href={`http://localhost:3001/api/reserva/${r.id}`}>Eliminar</a>
+                <a className="mt-2 p-2 btn btn-danger" href={`https://backend-cartoon-pizza-frutas.azurewebsites.net/api/reserva/${r.id}`}>Eliminar</a>
               </div>
             ))}
           </div>

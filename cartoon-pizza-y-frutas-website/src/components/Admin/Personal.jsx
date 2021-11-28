@@ -36,7 +36,7 @@ export default function Personal() {
     }
     
     const peticionGET = () => {
-        fetch("http://localhost:3001/api/personal")
+        fetch("https://backend-cartoon-pizza-frutas.azurewebsites.net/api/personal")
             .then(res => res.json())
             .then(data => {
                 SetgetPersonal(data) 
@@ -45,7 +45,7 @@ export default function Personal() {
     }
 
     const peticionPost = async () => {                           
-        await axios.post("http://localhost:3001/api/personal", nuevoDato)
+        await axios.post("https://backend-cartoon-pizza-frutas.azurewebsites.net/api/personal", nuevoDato)
             .then(response => {
                 setnuevoDato(data.concat(response.data))
                 ToogleModalAgregar();                
@@ -54,7 +54,7 @@ export default function Personal() {
     }
 
     const peticionPut =  () => {
-        fetch(`http://localhost:3001/api/personal/${nuevoDato.id}`)
+        fetch(`https://backend-cartoon-pizza-frutas.azurewebsites.net/api/personal/${nuevoDato.id}`)
             .then(res => res.json())
             .then(data => {
                 setnuevoDato(data)
@@ -84,7 +84,7 @@ export default function Personal() {
                 <Modal isOpen={ModalAgregar}>
                     <ModalHeader>Agregar nuevo empleado</ModalHeader>
                     <ModalBody>
-                        <form action="http://localhost:3001/api/personal" method="POST" onSubmit={peticionPost}>
+                        <form action="https://backend-cartoon-pizza-frutas.azurewebsites.net/api/personal" method="POST" onSubmit={peticionPost}>
                             <div className="mb-3">
                                 <label htmlFor="" className="form-label">Nombre:</label>
                                 <input type="text" className="form-control" name="nombre" placeholder="nombre" onChange={handleChange} required />
@@ -120,7 +120,7 @@ export default function Personal() {
                                 id ={p.id}
                                 onClick = {() => SelectOpcion(p,"Editar")}
                                 >Editar</button>
-                                <a className="ms-5 mt-2 p-2 btn btn-danger" href={`http://localhost:3001/api/personal/${p.id}`}>Eliminar</a>
+                                <a className="ms-5 mt-2 p-2 btn btn-danger" href={`https://backend-cartoon-pizza-frutas.azurewebsites.net/api/personal/${p.id}`}>Eliminar</a>
                             </div>                                
                         ))
                     }
@@ -128,7 +128,7 @@ export default function Personal() {
                 <Modal isOpen={ModalAgregar}>
                     <ModalHeader>Agregar nuevo empleado</ModalHeader>
                     <ModalBody>
-                        <form action="http://localhost:3001/api/personal" method="POST" onSubmit={peticionPost}>
+                        <form action="https://backend-cartoon-pizza-frutas.azurewebsites.net/api/personal" method="POST" onSubmit={peticionPost}>
                             <div className="mb-3">
                                 <label htmlFor="" className="form-label">Nombre:</label>
                                 <input type="text" className="form-control" name="nombre" placeholder="nombre" onChange={handleChange} required />
@@ -152,7 +152,7 @@ export default function Personal() {
                 <Modal isOpen={ModalEditar}>
                     <ModalHeader>Editar datos del empleado</ModalHeader>
                     <ModalBody>
-                        <form onSubmit={peticionPut} action={`http://localhost:3001/api/personal/${nuevoDato.id}`} method="POST">                        
+                        <form onSubmit={peticionPut} action={`https://backend-cartoon-pizza-frutas.azurewebsites.net/api/personal/${nuevoDato.id}`} method="POST">                        
                             <div className="mb-3">
                                 <label htmlFor="" className="form-label">Nombre:</label>
                                 <input type="text" className="form-control" name="nombre" onChange={handleChange} value={nuevoDato.nombre} required />

@@ -9,7 +9,7 @@ export default function MostrarContacto() {
   const [carga, setCarga] = useState(true)
   
  useEffect(() => {
-    fetch("http://localhost:3001/api/comentarios")
+    fetch("https://backend-cartoon-pizza-frutas.azurewebsites.net/api/comentarios")
       .then(res => res.json())
       .then(data => {
         setComentarios(data)
@@ -51,7 +51,7 @@ export default function MostrarContacto() {
                   <span>Comentario:   </span>
                   {comentario.mensaje}
                 </p>
-                <a className="mt-2 p-2 btn btn-danger" href={`http://localhost:3001/api/comentarios/${comentario.id}`}>Eliminar</a>
+                <a className="mt-2 p-2 btn btn-danger" href={`https://backend-cartoon-pizza-frutas.azurewebsites.net/api/comentarios/${comentario.id}`}>Eliminar</a>
               </div>
             ))}
           </div>
