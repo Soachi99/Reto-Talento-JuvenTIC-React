@@ -88,8 +88,10 @@ export function deleteCarrito(num) {
                 {
                     icon: 'success',
                     title: 'Se ha removido de tu lista el producto seleccionado correctamente',
+                    allowEscapeKey: false,
+                    allowOutsideClick: false,
                     showConfirmButton: false,
-                    timer: 1500
+                    timer: 1000
                 }
             ).then((result) => {
                 if (result.dismiss === Swal.DismissReason.timer) {
@@ -97,6 +99,6 @@ export function deleteCarrito(num) {
                     window.location.reload(false);
                 }
             })
-        }   
+        }
     })
 }
