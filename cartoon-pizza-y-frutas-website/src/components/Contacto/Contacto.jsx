@@ -29,7 +29,7 @@ export default function Contacto() {
       mensaje,
     };
   
-    const url = await axios.post("localhost:3001/api/comentarios", {datos});
+    const url = await axios.post("https://backend-cartoon-pizza-frutas.azurewebsites.net/api/comentarios/", {datos});
     const enviarDatos = await url.data;
     return enviarDatos;    
   };
@@ -41,7 +41,7 @@ export default function Contacto() {
         <div className="contenedor-formulario">
           <h1>contáctenos</h1>
           <form
-            action="http://localhost:3001/api/comentarios"
+            action="https://backend-cartoon-pizza-frutas.azurewebsites.net/api/comentarios/"
             method="POST"
             className="formulario"
             onSubmit={enviar}
