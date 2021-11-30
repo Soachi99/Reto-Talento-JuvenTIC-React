@@ -54,7 +54,7 @@ export default function Personal() {
     }
 
     const peticionPut =  () => {
-        fetch(`https://backend-cartoon-pizza-frutas.azurewebsites.net/api/personal/${nuevoDato.id}`)
+        fetch(`https://backend-cartoon-pizza-frutas.azurewebsites.net/api/personal/edit/${nuevoDato.id}`)
             .then(res => res.json())
             .then(data => {
                 setnuevoDato(data)
@@ -152,7 +152,7 @@ export default function Personal() {
                 <Modal isOpen={ModalEditar}>
                     <ModalHeader>Editar datos del empleado</ModalHeader>
                     <ModalBody>
-                        <form onSubmit={peticionPut} action={`https://backend-cartoon-pizza-frutas.azurewebsites.net/api/personal/${nuevoDato.id}`} method="POST">                        
+                        <form onSubmit={peticionPut} action={`https://backend-cartoon-pizza-frutas.azurewebsites.net/api/personal/edit/${nuevoDato.id}`} method="POST">                        
                             <div className="mb-3">
                                 <label htmlFor="" className="form-label">Nombre:</label>
                                 <input type="text" className="form-control" name="nombre" onChange={handleChange} value={nuevoDato.nombre} required />
