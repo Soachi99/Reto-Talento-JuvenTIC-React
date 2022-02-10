@@ -28,20 +28,22 @@ export default function Contacto() {
       email,
       mensaje,
     };
-  
-    const url = await axios.post("https://backend-cartoon-pizza-frutas.azurewebsites.net/api/comentarios/", {datos});
+
+    const url = await axios.post(
+      "https://talento-juventic-backend.herokuapp.com/api/comentarios",
+      { datos }
+    );
     const enviarDatos = await url.data;
-    return enviarDatos;    
+    return enviarDatos;
   };
 
-    
   return (
     <div className="contenedor">
       <div className="contenedor-general-contacto">
         <div className="contenedor-formulario">
           <h1>contáctenos</h1>
           <form
-            action="https://backend-cartoon-pizza-frutas.azurewebsites.net/api/comentarios/"
+            action="https://talento-juventic-backend.herokuapp.com/api/comentarios"
             method="POST"
             className="formulario"
             onSubmit={enviar}

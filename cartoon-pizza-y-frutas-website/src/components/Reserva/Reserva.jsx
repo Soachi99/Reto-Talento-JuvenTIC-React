@@ -52,7 +52,7 @@ const Reserva = () => {
     };
 
     const result = await axios.post(
-      "https://backend-cartoon-pizza-frutas.azurewebsites.net/api/reserva",
+      "https://talento-juventic-backend.herokuapp.com/api/reserva",
       {
         datos,
       }
@@ -67,7 +67,7 @@ const Reserva = () => {
         <form
           className="formulario"
           id="form"
-          action="https://backend-cartoon-pizza-frutas.azurewebsites.net/api/reserva"
+          action="https://talento-juventic-backend.herokuapp.com/api/reserva"
           method="POST"
           onSubmit={enviarDatos}
           required

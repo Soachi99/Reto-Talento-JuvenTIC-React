@@ -6,16 +6,15 @@ import "./nosotros.css";
 //import personal from "./staff.json";
 
 export default function AboutUs() {
-
   const [personal, setPersonal] = useState([]);
 
   useEffect(() => {
-    fetch("https://backend-cartoon-pizza-frutas.azurewebsites.net/api/personal")
-      .then(res => res.json())
-      .then(data => setPersonal(data))
-      .catch(error => console.log(error))
+    fetch("https://talento-juventic-backend.herokuapp.com/api/personal")
+      .then((res) => res.json())
+      .then((data) => setPersonal(data))
+      .catch((error) => console.log(error));
   }, []);
-  
+
   return (
     <>
       <div className="contenedor-nosotros-main">
@@ -23,11 +22,14 @@ export default function AboutUs() {
         <div className="contenedor-personal" id="personal">
           <h1>nuestro personal</h1>
           <div className="contenedor-personal-grid">
-            {
-              personal.map(p => (
-                <OurStaff key={p.id} nombre={p.nombre} cargo={p.cargo} imagen={p.imagen_url} />
-              ))
-            }
+            {personal.map((p) => (
+              <OurStaff
+                key={p.id}
+                nombre={p.nombre}
+                cargo={p.cargo}
+                imagen={p.imagen_url}
+              />
+            ))}
           </div>
         </div>
       </div>
